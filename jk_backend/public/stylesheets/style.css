@@ -1,0 +1,21 @@
+body {
+  padding: 0px 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+
+.home, .approves, .tags, .logs {
+  margin: 20px;
+  border-bottom: solid 1px black;
+  cursor: pointer;
+}
+
+.main {
+  width:80%;
+  float:right;
+}

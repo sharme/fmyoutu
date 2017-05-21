@@ -1,0 +1,133 @@
+
+@btn_color: #eee;
+
+.cke_contents {
+  height: 100px;
+}
+
+.foot_wrapper {
+  margin: 50px 5%;
+  display: block;
+  .foot_wrapper-back {
+    padding: 0px 5% 0px 5%;
+    .foot_wrapper-back_close {
+      float: right;
+      font-size: 20px;
+      color: white;
+      width: 26px;
+      height: 26px;
+      text-align: center;
+      line-height: 1.3;
+      background-color: gray;
+      cursor: pointer;
+      border: solid 1px;
+      border-radius: 15px;
+      margin-right: 5px;
+    }
+  }
+  .foot_wrapper-main {
+    width: 100%;
+    height: 800px;
+    //padding: 0px 5% 0px 5%;
+    .foot_wrapper-main_follow {
+      float: right;
+      margin: 20px;
+    }
+
+    button {
+      border-radius: 2px;
+      background-color: darkgray;
+      border: none;
+    }
+
+    .foot_wrapper_pic_list {
+      height: 85px;
+      .foot_wrapper_pic_list_img {
+        width: 75px;
+        height: 75px;
+        margin-top: 10px;
+        margin-right: 10px;
+        float: left;
+        img {
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .foot_wrapper-main_profile {
+      margin-top: 10px;
+      img {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+      }
+    }
+    .foot_wrapper-main_profile-slogan {
+      min-height: 20px;
+    }
+    .foot_wrapper-main_comment-content {
+      //height: 70px;
+      margin: 10px;
+      line-height: 2;
+      overflow-wrap: break-word;
+      overflow: hidden;
+    }
+    .foot_wrapper-main_comment-add {
+      //margin: 10px 80px 10px 80%;
+      width: 80px;
+      margin: 10px;
+      float: right;
+      border-radius: 6px;
+      background-color: @btn_color;
+    }
+    .foot_wrapper-main_comment-from {
+      margin: 6px;
+    }
+    .foot_wrapper-main_follower-img {
+      width: 60px;
+      height: 60px;
+      float: left;
+      margin: 10px;
+      img {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+      }
+    }
+    .foot_wrapper-main_distance {
+      height: 300px;
+    }
+  }
+}
+
+
+
+.foot_wrapper-main_comment {
+
+  border: solid 1px gray;
+  padding: 20px;
+  margin-top: 5px;
+
+  .footstep-list-div-comment-avatar {
+    //position: relative;
+    //border-radius: 50%;
+    //width: 50px;
+    //height: 60px;
+    //float: left;
+    margin: 0px 0% 0px 0px;
+    text-align: center;
+    min-height: 100px;
+    padding: 20px 30px 20px 10px;
+    line-height: 3;
+    float: left;
+
+  }
+
+  .footstep-list-div-comment-avatar-img {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+  }
+}

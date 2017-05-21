@@ -1,0 +1,135 @@
+.profile_top-edit {
+  height: 120px;
+  background-color: lightslategray;
+}
+.profile_top-edit .profile_top-edit-info {
+  text-align: center;
+  line-height: 1.5;
+  padding-top: 20px;
+  margin: 0px 35%;
+  left: 0px;
+}
+.profile_top-edit .profile_top-edit-info .profile_top-edit-info-name {
+  position: relative;
+  height: 30px;
+  line-height: 1.5;
+  font-size: 16px;
+}
+.profile_top-edit .profile_top-edit-info .profile_top-edit-info-name .profile_top-edit-info-edit {
+  float: left;
+  width: 70px;
+  text-align: center;
+}
+.profile_middle {
+  height: 100px;
+  margin: 0px;
+  padding-top: 20px;
+  display: block;
+}
+.profile_middle .profile_middle-point {
+  width: 15%;
+  height: 60px;
+  text-align: center;
+  line-height: 2;
+  float: left;
+  margin-left: 7%;
+  background-color: lightslategray;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+}
+.footstep-list {
+  min-height: 600px;
+  z-index: 2;
+  position: relative;
+}
+.footstep-list .footstep_list_profile {
+  padding: 0px 5%;
+}
+.footstep-list .profile_down-create {
+  width: 100px;
+  height: 30px;
+  margin-left: 10px;
+  text-align: center;
+  background-color: darkgray;
+  line-height: 2;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.footstep-list .footstep-list_profile_end {
+  padding-right: 40%;
+  height: 100px;
+  position: relative;
+  color: grey;
+  bottom: 0;
+  text-align: center;
+  line-height: 3;
+  font-size: 14px;
+  width: 100%;
+  float: left;
+}
+.footstep-list #footstep-list-div {
+  float: left;
+  border: solid 1px lightgrey;
+  border-radius: 6px;
+  font-size: 12px;
+  padding: 10px 9px !important;
+  width: 336px;
+  top: 10px;
+  position: absolute;
+  visibility: hidden;
+  background: white;
+}
+.footstep-list .footstep-list-div-pic img {
+  border-radius: 2%;
+  width: 100%;
+  height: 100%;
+  min-height: 160px;
+  cursor: zoom-in;
+}
+.footstep-list .footstep-list-div-createTime {
+  font-size: 11px;
+  padding: 0px;
+  color: grey;
+}
+.footstep-list .footstep-list-div-desc {
+  padding: 5px 10px 5px 0px;
+  word-wrap: break-word;
+  font-size: 13px;
+}
+.footstep-list .footstep-list-div-comment {
+  line-height: 15px;
+  padding: 10px;
+  position: relative;
+  font-size: 12px;
+  font-family: cursive;
+  overflow-wrap: break-word;
+}
+.footstep-list-div-comment-avatar {
+  position: relative;
+  border-radius: 50%;
+  width: 50px;
+  height: 60px;
+  float: left;
+}
+.footstep-list-div-comment-avatar-img {
+  height: 30px;
+  width: 35px;
+  border-radius: 12px;
+}
+.follow-list {
+  margin: 0px;
+}
+.follow-list .follow-list-div-comment-avatar {
+  position: relative;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  float: left;
+  padding: 10px;
+}
+.follow-list .follow-list-div-comment-avatar-img {
+  height: 60px;
+  width: 60px;
+  border-radius: 12px;
+}

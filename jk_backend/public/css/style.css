@@ -1,0 +1,593 @@
+body {
+  /*padding: 5px 0px 0px 25px;*/
+  margin: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+/*.user-icon{*/
+  /*background: url(http://localhost:8000/app/img/core-sprites.png) -237px 6px no-repeat;*/
+  /*width: 30px;*/
+  /*height: 30px;*/
+  /*position: absolute;*/
+  /*top: 20px;*/
+  /*right: 110px;*/
+  /*z-index: 1;*/
+  /*cursor: pointer;*/
+  /*background-color: green;*/
+/*}*/
+
+
+/*.user-icon-hover {*/
+  /*position: fixed;*/
+  /*top: 10px;*/
+  /*left: 45%;*/
+  /*z-index: 1;*/
+/*}*/
+
+/*.view-container{*/
+  /*padding-bottom: 200px;*/
+/*}*/
+
+/*.buybs_shop-text {*/
+  /*white-space: nowrap;*/
+  /*text-overflow: ellipsis;*/
+  /*-o-text-overflow: ellipsis;*/
+  /*overflow: hidden;*/
+/*}*/
+
+/*a {*/
+  /*color: black;*/
+  /*text-decoration: none;*/
+  /*cursor: pointer;*/
+/*}*/
+
+/*#header {*/
+  /*height: 60px;*/
+  /*padding: 20px 20px 0px 20px;*/
+  /*background-color: whitesmoke;*/
+  /*width: 100%;*/
+/*}*/
+
+/*#logged_in {*/
+  /*width: 100%;*/
+  /*text-align: right;*/
+/*}*/
+
+
+/*#login_popup {*/
+  /*width: 400px;*/
+  /*height: 300px;*/
+  /*position: absolute;*/
+  /*background-color: whitesmoke;*/
+  /*z-index: 2;*/
+  /*margin: 200px 30%;*/
+  /*border-radius: 30px;*/
+  /*display: none;*/
+/*}*/
+
+/*.login_popup {*/
+  /*width: 1000px;*/
+  /*height: 1000px;*/
+  /*background-color: lightgrey;*/
+/*}*/
+
+/*#login_form {*/
+  /*margin: 40px 40px 40px 60px;*/
+/*}*/
+
+/*#login_popup-header, #profile_top-edit-header {*/
+  /*width: 100%;*/
+  /*text-align: center;*/
+  /*height: 50px;*/
+  /*line-height: 3;*/
+  /*border-bottom: solid gray 1px;*/
+  /*font-size: 18px;*/
+/*}*/
+
+/*#login_popup-header-del, #profile_top-edit-del{*/
+  /*cursor: pointer;*/
+  /*float: right;*/
+  /*margin-right: 10px;*/
+/*}*/
+
+/*#login_form-phoneNumber, #login_form-password {*/
+  /*padding: 10px;*/
+  /*width: 200px;*/
+  /*margin: 10px 0px 0px 10px;*/
+/*}*/
+
+/*#login_form-password {*/
+  /*margin-left: 25px;*/
+  /*margin-bottom: 10px;*/
+/*}*/
+
+/*#login_invalid {*/
+  /*color: red;*/
+  /*padding: 10px;*/
+  /*font-size: 12px;*/
+  /*display: none;*/
+/*}*/
+
+
+/*#foot {*/
+  /*height: 35px;*/
+  /*width: 100%;*/
+  /*float: left;*/
+  /*line-height: 2;*/
+  /*margin-top: 200px;*/
+  /*padding: 0px 20px 0px 20px;*/
+  /*background-color: lightgrey;*/
+  /*bottom: 0;*/
+  /*position: fixed;*/
+/*}*/
+
+/*.button {*/
+  /*text-decoration: none;*/
+  /*color: gray;*/
+  /*float: left;*/
+  /*font-size: 24px;*/
+/*}*/
+
+/*li {*/
+  /*padding: 20px 20px 0px 25px;*/
+  /*float: left;*/
+  /*list-style-type: none;*/
+  /*font-size: 16px;*/
+/*}*/
+
+/*#login_logout-nav {*/
+  /*float: right;*/
+  /*padding: 5px 30px 0px 0px;*/
+/*}*/
+
+/*.stars-4 {*/
+  /*width:48px;*/
+/*}*/
+
+/*.star-rating {*/
+  /*height: 18px;*/
+  /*margin: 2px 0;*/
+  /*background: url(/app/img/icons.png) 0 -16px no-repeat;*/
+  /*text-indent: -2000em;*/
+  /*line-height: normal;*/
+  /*display: inline-block;*/
+/*}*/
+
+
+
+/*#logout-nav {*/
+  /*display: none;*/
+/*}*/
+
+/*#login-nav {*/
+
+/*}*/
+
+/*#bottom-div {*/
+  /*padding-bottom: 100px;*/
+  /*width: 100%;*/
+  /*height: 300px;*/
+  /*float: left;*/
+/*}*/
+
+/*#search {*/
+  /*float: left;*/
+  /*width: 100%;*/
+  /*padding: 10px 10px 10px 10px;*/
+  /*background-color: lightgrey;*/
+  /*!*background-image: url(/app/img/bg.jpg);*!*/
+  /*!*background-repeat: no-repeat;*!*/
+  /*!*background-size: cover;*!*/
+  /*!*background-position: center;*!*/
+/*}*/
+
+/*.search_country, .stick_footstep, .like_footstep {*/
+  /*border-radius: 4px;*/
+  /*padding: 9px 12px;*/
+  /*background-color: #efefef;*/
+  /*border: 0;*/
+  /*box-shadow: none;*/
+  /*margin-top: 10px;*/
+  /*margin-left: 10px;*/
+/*}*/
+
+/*#search_box {*/
+  /*width: 45%;*/
+  /*height: 200px;*/
+  /*background-color: lightgrey;*/
+  /*margin: 2% 25% 2% 30%;*/
+  /*border-radius: 58px;*/
+  /*position: absolute;*/
+  /*z-index: 1;*/
+/*}*/
+
+/*#search_bg {*/
+  /*height: 300px;*/
+  /*!*background-color: gray;*!*/
+  /*position: absolute;*/
+  /*!* display: block; *!*/
+  /*z-index: 1;*/
+  /*width: 100%;*/
+  /*padding: 0px 20px 0px 20px;*/
+/*}*/
+
+/*#search_box-logo {*/
+  /*float: left;*/
+  /*margin: 30px 15px 20px 60px;*/
+  /*font-size: 28px;*/
+  /*text-decoration: none;*/
+  /*color: black;*/
+/*}*/
+
+/*#search_box-city {*/
+  /*float: left;*/
+  /*margin: 40px 40px 20px 0px;*/
+  /*font-size: 14px;*/
+  /*text-decoration: none;*/
+  /*color: black;*/
+  /*width: 50%;*/
+/*}*/
+
+/*#search_box-text {*/
+  /*!*margin-left: 60px;*!*/
+  /*width: 60%;*/
+  /*height: 35px;*/
+/*}*/
+
+/*#search_box-submit {*/
+  /*width: 60px;*/
+  /*border-radius: 12px;*/
+  /*padding: 9px;*/
+  /*background-color: white;*/
+  /*cursor: pointer;*/
+/*}*/
+
+
+
+/*#register {*/
+  /*float: left;*/
+  /*padding: 20px 20px 100px 20px;*/
+  /*width: 100%;*/
+
+/*}*/
+
+/*#register_owner {*/
+  /*font-size: 16px;*/
+  /*color: gray;*/
+/*}*/
+
+/*#register_step1, #register_step2 {*/
+  /*padding: 0px 0px 0px 50px;*/
+  /*font-size: 24px;*/
+  /*color: grey;*/
+/*}*/
+
+/*#register_welcome {*/
+  /*width: 500px;*/
+  /*height: 200px;*/
+  /*background-color: lightgrey;*/
+  /*margin: 0px 0px 0px 20%;*/
+  /*text-align: center;*/
+  /*line-height: 6;*/
+  /*font-size: 28px;*/
+  /*color: gray;*/
+/*}*/
+
+/*#register_form, #register_shop {*/
+  /*margin: 0px 0px 0px 20%;*/
+/*}*/
+
+
+/*#register_form-phoneNumber, #register_form-username, #register_form-password, #register_shop-shopName, #register_shop-shopType, #register_shop-shopAddress, #register_shop-sells  {*/
+  /*padding: 5px 0px 5px 3px;*/
+  /*margin: 10px 0px 0px 20px;*/
+  /*width: 200px;*/
+/*}*/
+
+/*#register_form-password { margin-left: 33px;}*/
+
+/*#register_form-scCode {*/
+  /*padding: 5px 0px 5px 3px;*/
+  /*margin: 10px 5px 10px 20px;*/
+/*}*/
+
+/*#register_form-scCode-btn {*/
+
+/*}*/
+
+/*#footstep_form-submit {*/
+  /*margin: 30px 0px 0px 22%;*/
+/*}*/
+
+/*#register_form-submit, #register_shop-add-btn, #register_shop-submit , #footstep_form-submit{*/
+  /*width: 260px;*/
+  /*padding: 10px;*/
+  /*border-radius: 5px;*/
+  /*cursor: pointer;*/
+  /*background-color: lightgrey;*/
+/*}*/
+
+
+
+/*#footstep_div {*/
+  /*float: left;*/
+  /*border: solid 1px;*/
+  /*border-color: lightgray;*/
+  /*border-radius: 6px;*/
+  /*margin: 8px 0px 0px 25px;*/
+  /*width: 18%;*/
+/*}*/
+
+/*.footstep_div-pic {*/
+  /*min-height: 100px;*/
+/*}*/
+
+/*.footstep_div_createTime{*/
+  /*font-size: 11px;*/
+  /*padding: 10px;*/
+  /*color: grey;*/
+/*}*/
+
+/*.footstep_div-des{*/
+  /*padding: 10px;*/
+  /*word-wrap: break-word;*/
+/*}*/
+
+/*.footstep_div-comment {*/
+  /*line-height: 15px;*/
+  /*padding: 10px;*/
+  /*position: relative;*/
+  /*font-size: 12px;*/
+  /*font-family: cursive;*/
+/*}*/
+
+/*.footstep_div-comment-avatar{*/
+  /*position: relative;*/
+  /*border-radius: 50%;*/
+  /*width: 40px;*/
+  /*height: 40px;*/
+  /*float: left;*/
+/*}*/
+
+/*.footstep_div-comment-avatar-img {*/
+  /*height: 30px;*/
+  /*width: 35px;*/
+  /*border-radius: 12px;*/
+/*}*/
+
+
+#buybs_shop-div-content {
+  /*margin: 30px;*/
+  /*width: 300px;*/
+  text-align: left;
+  margin: 10px 10px 10px;
+
+}
+
+
+#shop-list {
+  padding: 0px;
+}
+
+/*#footstep_list-div {*/
+  /*width: 100%;*/
+  /*float: left;*/
+  /*min-height: 600px;*/
+  /*!*padding: 10px 10% 0px;*!*/
+/*}*/
+
+
+
+/*#shop_info-title {*/
+  /*padding: 320px 0px 0px 30px;*/
+/*}*/
+
+
+/*#shop_image-price {*/
+  /*position: initial;*/
+  /*margin-left: 70%;*/
+  /*line-height: 260px;*/
+  /*background: orange;*/
+  /*width: 30px;*/
+/*}*/
+
+
+/*.foot_wrapper-back{*/
+  /*position: relative;*/
+  /*margin: 10px 0px 10px 10px;*/
+  /*width: 80px;*/
+  /*height: 30px;*/
+  /*text-align: center;*/
+  /*background-color: cornflowerblue;*/
+  /*line-height: 2;*/
+  /*cursor: pointer;*/
+/*}*/
+
+/*.foot_wrapper-main {*/
+  /*width: 100%;*/
+  /*height: 800px;*/
+  /*padding: 0px 20% 0px 20%;*/
+/*}*/
+
+
+/*.foot_wrapper-main_follow, .foot_wrapper-main_comment-add {*/
+  /*float: right;*/
+/*}*/
+
+/*.foot_wrapper-main_profile {*/
+  /*margin-top: 10px;*/
+/*}*/
+
+/*.foot_wrapper-main_profile-slogan {*/
+  /*min-height: 20px;*/
+/*}*/
+
+
+/*.foot_wrapper-main_comment-content {*/
+  /*height: 70px;*/
+  /*margin: 10px;*/
+  /*line-height: 2;*/
+/*}*/
+
+/*.foot_wrapper-main_comment-from {*/
+  /*margin: 6px;*/
+/*}*/
+
+/*.foot_wrapper-main_follower-img {*/
+  /*width: 60px;*/
+  /*height: 60px;*/
+  /*float: left;*/
+  /*margin: 10px;*/
+/*}*/
+
+/*.foot_wrapper-main_distance{*/
+  /*height: 300px;*/
+/*}*/
+
+
+
+
+
+/*.span_text-left {*/
+  /*float: left;*/
+/*}*/
+
+/*.profile_top{*/
+  /*height: 120px;*/
+  /*background-color: lightslategray;*/
+/*}*/
+
+/*.profile_top-edit {*/
+  /*width: 500px;*/
+  /*height: 530px;*/
+  /*position: absolute;*/
+  /*margin: 10px 30%;*/
+  /*z-index: 2;*/
+  /*background: #f8f8f8;*/
+  /*display: none;*/
+  /*border-radius: 20px;*/
+/*}*/
+
+
+/*.profile_top_info-username, .profile_top_info-address, .profile_top_info-slogan, .profile_top_info-avatar{*/
+  /*margin: 10px 58px;*/
+  /*line-height: 3;*/
+/*}*/
+
+/*.profile_top_info-username-val, .profile_top_info-address-val, .profile_top_info-slogan-val, .profile_top_info-avatar-val{*/
+  /*float: right;*/
+  /*width: 300px;*/
+  /*margin: 10px;*/
+/*}*/
+
+/*.profile_top_info-avatar-val{*/
+  /*width: 250px;*/
+  /*!*content: '更新上传'*!*/
+/*}*/
+
+/*.profile_top_info-slogan-div, .profile_top_info-avatar-div {*/
+  /*height: 120px;*/
+/*}*/
+
+
+/*.profile_top_info-avatar-img {*/
+  /*width: 60px;*/
+  /*height: 60px;*/
+  /*position: absolute;*/
+  /*background-repeat: no-repeat;*/
+  /*background-size: contain;*/
+/*}*/
+
+/*.text_input {*/
+  /*width: 100%;*/
+/*}*/
+
+
+/*.profile_top-info{*/
+  /*height: 80px;*/
+  /*width: 100px;*/
+  /*left: 45%;*/
+  /*position: absolute;*/
+  /*text-align: center;*/
+  /*line-height: 5;*/
+/*}*/
+
+/*.profile_middle{*/
+  /*height: 100px;*/
+  /*border-bottom: solid 1px lightgrey;*/
+  /*padding-left: 20%;*/
+  /*padding-top: 20px;*/
+/*}*/
+
+/*.profile_middle-point{*/
+  /*width: 70px;*/
+  /*height: 60px;*/
+  /*text-align: center;*/
+  /*line-height: 2;*/
+  /*float: left;*/
+  /*margin-left: 100px;*/
+  /*background-color: lightslategray;*/
+  /*color: white;*/
+  /*cursor: pointer;*/
+/*}*/
+
+/*.profile_top-info-name{*/
+  /*position: relative;*/
+  /*float: left;*/
+  /*height: 30px;*/
+/*}*/
+
+/*.profile_top-info-edit{*/
+  /*float: left;*/
+  /*width: 70px;*/
+  /*text-align: center;*/
+/*}*/
+
+/*.profile_down-create{*/
+  /*width: 100px;*/
+  /*height: 30px;*/
+  /*margin-left: 10px;*/
+  /*text-align: center;*/
+  /*background-color: gray;*/
+  /*line-height: 2;*/
+  /*border-radius: 5px;*/
+  /*margin-top: 10px;*/
+/*}*/
+
+
+/*.create_footstep-info{*/
+  /*opacity: 1;*/
+  /*background: #fff;*/
+  /*border-radius: 6px;*/
+  /*display: inline-block;*/
+  /*position: relative;*/
+  /*text-align: left;*/
+  /*width: 45%;*/
+  /*min-height: 600px;*/
+  /*max-height: 850px;*/
+
+/*}*/
+
+/*.create_footstep-info-div{*/
+  /*margin-top: 10px;*/
+/*}*/
+
+/*.create_footstep{*/
+  /*min-height: 0;*/
+  /*position: relative;*/
+  /*text-align: center;*/
+  /*opacity: 0.8;*/
+  /*background: black;*/
+  /*padding: 20px;*/
+  /*display: none;*/
+/*}*/
+
+/*.create_footstep-info-span{*/
+  /*padding-left: 20px;*/
+  /*padding-right: 40px;*/
+/*}*/
+
+/*.create_footstep-info-pic,.create_footstep-info-desc,.create_footstep-info-from {*/
+  /*width:80%;*/
+  /*border-radius: 1px;*/
+/*}*/

@@ -1,0 +1,40 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+.zoomed{
+    /*margin-left: 4em;*/
+    height: 300px;
+    width: 200px;
+    top: 250px;
+    position: absolute;
+    left: 75%;
+    margin-top: 30px;
+    overflow: hidden;
+}
+
+.original{
+    /*float: left;*/
+    position: relative;
+    overflow: hidden;
+}
+
+
+.original img{
+    width: auto;
+}
+
+.zoomed img{
+    height: 200px;
+    position: relative;
+}
+
+.mark {
+    opacity: .3;
+    border: 6px dotted #fff;
+    background: #eee;
+}
+
+.hide {
+    visibility: hidden;
+}

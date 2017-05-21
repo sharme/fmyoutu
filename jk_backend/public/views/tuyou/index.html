@@ -1,0 +1,50 @@
+
+<script src="../../js/plugins/jquery-ui.min.js"></script>
+
+
+<div class="tuyou" ng-controller="tuyouCtrl">
+    <div class="matchMsg"></div>
+
+    <div id="step_one">
+        <div class="tuyou_destination">
+            <input type="text" style="border: solid 1px #43c17e;" width="100%" placeholder="选择你要去的目的地国家"  class="search_name" ng-model="des.ty_destination" onfocus="$('.tuyou_destination_list').css('display','')" >
+            <div class="tuyou_destination_list">
+                <li ng-click="selDestination(destination.c_name)" ng-repeat="destination in destinations | filter: des.ty_destination" onmouseleave="$(this).css('background-color','')" onmouseover="$(this).css('background-color','grey')">
+                    {{destination.c_name}}
+                </li>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <button ng-click="browserTuyou()">下一步</button>
+            <!--<button ng-click="browserTuyou()">直接浏览</button>-->
+        </div>
+    </div>
+
+
+    <!--<div id="step_two" style="display: none;">-->
+        <!--<div class="tuyou_stay">-->
+            <!--<input type="text" placeholder="到达时间" class="datepicker" ng-model="des.ty_stay_start">-->
+            <!--<br><br>-->
+            <!--<input type="text" class="datepicker" placeholder="离开时间" ng-model="des.ty_stay_end">-->
+        <!--</div>-->
+        <!--<div class="tuyou_description">-->
+            <!--<textarea cols="45" ng-model="des.ty_description" placeholder="告诉图友关于你的旅行计划和如何联系你"></textarea>-->
+        <!--</div>-->
+        <!--<div class="tuyou_next">-->
+            <!--<button ng-click="matchTuyou()">配对图友</button>-->
+            <!--<button ng-click="PrevStep()">返回</button>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+
+<script>
+    $( function() {
+        $( ".datepicker" ).datepicker();
+        $('.tuyou_destination_list').css('display','none');
+
+        $('li').on("click", function(){
+           alert('hey');
+        });
+
+    } );
+</script>

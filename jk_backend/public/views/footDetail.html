@@ -1,0 +1,92 @@
+<div class="foot_wrapper">
+
+    <div class="foot_wrapper-main">
+        <div class="foot_wrapper-back">
+            <a href="" ng-click="backHome()">
+                <span class="foot_wrapper-back_close">X</span>
+            </a>
+            <!--<hr>-->
+        </div>
+        <div>
+            <div ng-if="checkUser">
+                <button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="delBtn(foot.fs_id, foot.u_id)">删除</button>
+            </div>
+            <div ng-if="!checkUser">
+                <button class="stick_footstep" style={{foot.sticks==1?"background-color:#43c17e;":""}} ng-click="stickBtn(foot.fs_id, foot.u_id)">想去</button>&nbsp;&nbsp;<span class="btnStickNum{{foot.fs_id}}">{{foot.sticks}}</span>
+                <button class="like_footstep" style={{foot.likes==1?"background-color:#43c17e;":""}} ng-click="likeBtn(foot.fs_id, foot.u_id)">去过</button>&nbsp;&nbsp;<span class="btnLikeNum{{foot.fs_id}}">{{foot.likes}}</span>
+            </div>
+            <hr>
+            <p>{{foot.fs_des}}</p>
+        </div>
+        <div class="footstep_div-pic">
+            <div class="prev_pic footstep_div-pic_prev_pic" style="float: right; margin-left: 10px; cursor: pointer;" ng-click="prevPic(foot.fs_id)">上一张图</div>
+            <div class="next_pic footstep_div-pic_next_pic" style="cursor: pointer;" ng-click="nextPic(foot.fs_id)">下一张图</div>
+            <!--<zoom ng-if="zoom == true" window-size="{{windowSize}}" mark-height="100" mark-width="100" ng-src="{{trustSrc(foot.fs_bigImg)}}" zoom-lvl="{{4}}"></zoom>-->
+            <img ng-src="{{foot.fs_bigImg}}" class="picture-present" style="width: 100%; height: 100%; cursor: zoom-in;">
+        </div>
+        <div class="foot_wrapper_pic_list">
+            <div class="foot_wrapper_pic_list_img" ng-click="switchPic(foot.fs_pic)">
+                <img class="footstep_pic0" ng-src="{{foot.fs_pic}}">
+            </div>
+            <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic2" ng-click="switchPic(foot.fs_pic2)">
+                <img class="footstep_pic2" ng-src="{{foot.fs_pic2}}">
+            </div>
+            <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic3" ng-click="switchPic(foot.fs_pic3)">
+                <img class="footstep_pic3" ng-src="{{foot.fs_pic3}}">
+            </div>
+        </div>
+        <div class="foot_wrapper-main_profile">
+            <div>
+                <img src="{{foot.u_avatar}}"> {{foot.u_name}}(图友)
+                <!--<div class="next_pic" style="float: right; margin-left: 10px; padding: 3px 10px; background-color: darkgray; cursor: pointer;" ng-click="nextPic(foot.fs_id)">下一张图</div>-->
+            </div>
+            <div class="foot_wrapper-main_profile-slogan">
+                {{foot.u_slogan}} <button class="foot_wrapper-main_follow" ng-click="followUpBtn(foot.u_id)">关注</button>
+            </div>
+            <hr>
+        </div>
+        <div>
+            <p>评论: {{foot.comments}}</p>
+            <hr>
+
+            <div class="foot_wrapper-main_comment" ng-repeat="comment in comments">
+                <div>
+                    回复于: {{comment.cm_create_time | date: 'yyyy-MM-dd HH:mm'}}
+                    <div class="footstep-list-div-comment-avatar">
+                        <img ng-src="{{comment.u_avatar}}" class="footstep-list-div-comment-avatar-img"><br>{{comment.u_name}}
+                    </div>
+                    <hr>
+                    <div class="foot_wrapper-main_comment-content">
+                        <div ng-bind-html="renderHtml(comment.cm_content)"></div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <form ng-submit="submit()" method="POST">
+                    <div class="topic_content_reply" style="margin-top: 10px;">
+                        <textarea name="editor1" id="editor1" rows="10" cols="80" ng-disabled="loginCheck()"></textarea>
+                        <button class="foot_wrapper-main_comment-add" type="submit" >评论</button>
+                        <script>
+                            // Replace the <textarea id="editor1"> with a CKEditor
+                            // instance, using default configuration.
+                            CKEDITOR.replace( 'editor1' );
+                        </script>
+                    </div>
+
+
+                </form>
+            </div>
+            <hr>
+            <div class="foot_wrapper-main_follower">
+                瞧瞧谁都来过这里<hr>
+                <div class="foot_wrapper-main_follower-img" ng-repeat="stick in sticks">
+                        <img ng-src="{{stick.u_avatar?stick.u_avatar:'../img/default_icon.png'}}"  class="footstep-list-div-comment-avatar-img" title="{{stick.u_name}}">
+                </div>
+            </div>
+        </div>
+
+        <div class="foot_wrapper-main_distance"></div>
+
+    </div>
+</div>

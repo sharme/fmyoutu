@@ -1,0 +1,171 @@
+
+<!--<div ng-if="isMobile()" style="margin-bottom: 100px; ">-->
+    <!--<div ng-repeat="item in items" style="margin: 10px;">-->
+        <!--<div class="wel_image" style="background-image: url({{item.src}}); background-position-x: {{item.position}}; padding:{{item.padding}}; color: {{item.color}};" >-->
+            <!--<h3>-->
+                <!--{{item.title}}-->
+            <!--</h3>-->
+            <!--<p>-->
+                <!--{{item.content}}-->
+            <!--</p>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+
+<!--<div ng-if="!isMobile()" style="margin-bottom: 100px; ">-->
+
+    <!--<div style="height: 500px;">-->
+        <!--<div class="wel_image" style="background-image: url(http://o99spo2ev.bkt.clouddn.com/wel-header.jpg); height: 100%; color: white; text-align: center; padding: 40px; background-position-y: -200px;" >-->
+            <!--<h2>-->
+                <!--分享你所看到的美-->
+            <!--</h2>-->
+            <!--<p style="width: 600px; margin: auto; padding: 10px; font-family: cursive; color: white; font-size: 18px;" >-->
+                <!--回忆那些我们曾经的美好, 用照片来唤醒我们的回忆, 也用照片来引导驴友的方向-->
+            <!--</p>-->
+        <!--</div>-->
+        <!--<a href="#/email_registration"><div class="wel_register">免费注册</div></a>-->
+    <!--</div>-->
+    <!--<div style="height: 500px; text-align: center; top: 480px; position: absolute; width: 100%; ">-->
+        <!--<h3 style="color: lawngreen;">-->
+            <!--分享图片-->
+        <!--</h3>-->
+        <!--<img src="http://o99spo2ev.bkt.clouddn.com/wel_image5.JPG" style="height: 100%;">-->
+            <!--<p style="color: gray; width: 600px; margin: auto; padding: 10px;">-->
+                <!--图友社区汇聚了世界各地的旅行目的地图片, 通过快速搜素，图友社区将为你展示最丰富，最全面，最值得去的旅行目的地.-->
+            <!--</p>-->
+    <!--</div>-->
+
+    <!--<div style=" height: 500px;-->
+    <!--text-align: center;-->
+    <!--top: 1180px;-->
+    <!--position: absolute;-->
+    <!--width: 100%;">-->
+        <!--<h3>-->
+            <!--交流经验-->
+        <!--</h3>-->
+        <!--<img src="http://o99spo2ev.bkt.clouddn.com/wel_image3.JPG" style="height: 100%;">-->
+        <!--<p style="color: gray; width: 600px; margin: auto; padding: 10px;">-->
+            <!--图友社区汇聚了世界各地的旅行经验分享与常见问题解决方案, 图友们相互分享，相互交流，让彼此的旅行变的更容易，让旅行体验最大化.-->
+        <!--</p>-->
+    <!--</div>-->
+
+    <!--<div style=" height: 500px;-->
+    <!--text-align: center;-->
+    <!--top: 1880px;-->
+    <!--position: absolute;-->
+    <!--width: 100%;">-->
+        <!--<h3>-->
+            <!--寻找伙伴-->
+        <!--</h3>-->
+        <!--<img src="http://o99spo2ev.bkt.clouddn.com/wel_image4.JPG" style="height: 100%;">-->
+        <!--<p style="color: gray; width: 600px; margin: auto; padding: 10px;">-->
+            <!--让旅行不再孤单. 图友约伴将根据你的所在位置，停留时间去匹配同样时间，同样地点的图友. 让约伴更容易, 让旅行不再孤单.-->
+        <!--</p>-->
+    <!--</div>-->
+
+    <!--<div style=" height: 500px;-->
+    <!--text-align: center;-->
+    <!--top: 2580px;-->
+    <!--position: absolute;-->
+    <!--width: 100%;-->
+    <!--">-->
+        <!--<h3>-->
+            <!--图友社区-->
+        <!--</h3>-->
+        <!--<img src="http://o99spo2ev.bkt.clouddn.com/wel_image2.JPG" style="height: 100%;">-->
+        <!--<p style="color: gray; width: 600px; margin: auto; padding: 10px; margin-bottom: 100px;">-->
+            <!--汇聚每一个爱旅行的人，构建一个绿色，和谐，友爱的社区, 彼此交流，分享，让旅行变的更容易.-->
+        <!--</p>-->
+    <!--</div>-->
+
+<!--</div>-->
+
+
+<div id="register-content" style="min-height: 30px;">
+    <div id="register-content-wrapper" class="register-content-wrapper">
+        <div class="register-content-wrapper-main">
+            <div class="register-content-wrapper-main-title">
+                <h3>邮箱注册</h3>
+            </div>
+            <div class="register-content-wrapper-main-form">
+                <form id="register_form" name="register_form-div" ng-submit="submit()" method="POST">
+
+                    <div class="g-div">
+                        <label>邮箱</label>
+                        <input type="text" name="email" ng-model="user.u_email" id="register-form-email" value="" required/>
+                    </div>
+                    <div class="g-div">
+                        <label>密码</label>
+                        <input type="password" ng-model="user.u_pwd" id="register-form-password" name="password" value="" required/>
+                    </div>
+                    <div class="g-div">
+                        <label>用户名</label>
+                        <input type="text" name="username" ng-model="user.u_name" id="register-form-username" value="" required/>
+                    </div>
+                    <!--<div class="g-div">-->
+                    <!--<input type="checkbox">-->
+                    <!--<label>我同意有图网阐明的<a>所有条款</a></label>-->
+                    <!--</div>-->
+                    <div class="g-div validation_msg" style="color:red;"></div>
+                    <div class="g-div">
+                        <input type="submit" id="register-form-submit" value="注册"/>
+                    </div>
+                    <div class="g-div">
+                        <p>
+                        <hr>
+                        </p>
+                        <p>
+                        <div>
+                            <a href="#/register">手机注册</a>
+                        </div>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="register-content-wrapper-desc">
+            <div class="register-content-wrapper-desc-words" style="background-image: url('img/main_h1.jpg');background-size: cover;
+    color: white;">
+                <b>国内首家 "风景, 美食" 类图片社区.</b>
+                <div class="register-content-wrapper-desc-words-msg">
+                    <hr>只需简单的输入 "关键字" 就能</hr>
+                <hr>获取《目的地》的 相关景点图片, 美食图片信息</hr>
+            <!--<hr>促使分享者和志趣相投的人产生互动, 成为朋友, 一起探索世界.</hr>-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div>
+    <!--<img src="http://o99spo2ev.bkt.clouddn.com/wel_image4.JPG" style="height: 100%; width: 60%; margin: 0% 20%;">-->
+</div>
+
+
+
+
+
+<!-- Swiper JS -->
+<script src="../js/plugins/swiper-3.3.1.jquery.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+
+    $(function(){
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            paginationClickable: true,
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: 7000,
+            observer: true,
+            observerParents: true,
+            autoplayDisableOnInteraction: false
+        });
+    });
+</script>

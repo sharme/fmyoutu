@@ -1,0 +1,71 @@
+
+
+<div class="tuyou">
+    <div>给你匹配的图友</div><hr>
+    <div class="match_result_msg">
+
+    </div>
+    <div ng-repeat="tuyou in results" class="match">
+        <div class="match_account">
+            <a><img src="{{tuyou.u_avatar?tuyou.u_avatar:'../../img/default_icon.png'}}"></a><br>
+            <a>{{tuyou.u_name}}</a>
+        </div>
+        <div class="match_info">
+            <div class="section">
+                <div class="section_header" style="">前往国家: &nbsp;&nbsp;<span style="color:#43c17e;">{{tuyou.ty_destination}}</span></div>
+                <div style="">
+                    到达 &nbsp;{{tuyou.ty_stay_start | date: 'yyyy-MM-dd'}} &nbsp;&nbsp; 离开 &nbsp; {{tuyou.ty_stay_end | date: 'yyyy-MM-dd'}}
+                </div>
+                <div>
+                </div>
+                <div style="margin: 10px 0px;">
+                    <div class="section_content" style="color: grey; font-size: 12px;">
+                        {{tuyou.ty_description}}
+                    </div>
+                </div>
+                <div>
+                    <span ng-click="replyList(tuyou.ty_id)" style="cursor: pointer;" onmouseleave="$(this).css('color','black')" onmouseover="$(this).css('color','red');">回复 ({{tuyou.comments}})</span>
+                </div>
+            </div>
+            <div class="comments hide{{tuyou.ty_id}}" style="font-size: 12px;">
+                <div class="icon_divider">
+                    <i class="icon_arrow"></i>
+                </div>
+
+                <div class="comments_list" ng-repeat="message in messages">
+                    <div class="comments_list_img">
+                        <img src="{{message.u_avatar}}">
+                    </div>
+                    <div class="comments_list_content">
+                        <div class="comments_list_content_title">
+                            {{message.u_name}}<span style="margin-left: 12px;">{{message.tm_create_time | date: 'yyyy-MM-dd'}}</span>
+                        </div>
+                        <div class="comments_list_content_val">
+                            <span>{{message.tm_message}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment_reply">
+                    <div>
+                        <form ng-submit="submit(tuyou.ty_id)" method="POST">
+                            <div class="comment_reply_input">
+                                <input class="comment_reply_input_val" type="text" ng-model="tm.tm_message" placeholder="添加评论">
+                            </div>
+                            <div class="comment_reply_button">
+                                <button type="button" ng-click="hiddenReply(tuyou.ty_id)">收起</button>
+                                <button type="submit">回复</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</div>

@@ -1,0 +1,48 @@
+<div class="create_footstep">
+    <div class="create_footstep-info">
+        <form ng-submit="submit()" method="POST">
+            <div id="create_footstep-info-header"><span id="create_footstep-info-header-del" ng-click="closeBtn()">X</span></div>
+
+            <div>
+            <img class="create_footstep-info_img present_picture">
+            </div>
+            <div class="create_footstep-info_img_list">
+                <div class="create_footstep-info_img_list_pic">
+                    <div class="fileUpload footstep_pic_btn0">
+                        <input type="file" class="upload" onchange="angular.element(this).scope().uploadFile(this,0)" name="imageName"/>
+                        <span class="uploadBtn">+</span>
+                    </div>
+                    <img class="footstep_pic0" ng-click="switchPic(footstep.fs_pic)">
+                </div>
+                <div class="create_footstep-info_img_list_pic">
+                    <div class="fileUpload footstep_pic_btn2">
+                        <input type="file" class="upload" onchange="angular.element(this).scope().uploadFile(this,2)" name="imageName"/>
+                        <span class="uploadBtn">+</span>
+                    </div>
+                    <img class="footstep_pic2" ng-click="switchPic(footstep.fs_pic2)">
+                </div>
+                <div class="create_footstep-info_img_list_pic">
+                    <div class="fileUpload footstep_pic_btn3">
+                        <input type="file" class="upload" onchange="angular.element(this).scope().uploadFile(this,3)" name="imageName"/>
+                        <span class="uploadBtn">+</span>
+                    </div>
+                    <img class="footstep_pic3" ng-click="switchPic(footstep.fs_pic3)">
+                </div>
+            </div>
+            <hr>
+            <div id="myProgress">
+                <div id="myBar"></div>
+            </div>
+            <input type="text" style="display:none;" name="fs_pic" ng-model="footstep.fs_pic2">
+            <input type="text" style="display:none;" name="fs_pic" ng-model="footstep.fs_pic3">
+            <input type="text" style="display:none;" name="fs_pic" ng-model="footstep.fs_smallImg">
+            <input type="text" style="display:none;" name="fs_pic" ng-model="footstep.fs_bigImg">
+            <div  class="create_footstep-info-div">
+                <!--<span class="create_footstep-info-span">描述</span>-->
+                <textarea ng-model="footstep.fs_desc" style="height: 120px;" class="create_footstep-info-desc" rows="3" cols="40" placeholder="描述下这里的位置,特点 和给你的感受." required></textarea>
+                <!--<input type="text" ng-model="footstep.fs_desc" name="imagePrice1" value=""/>-->
+            </div>
+            <div><input class="uploadedBtn" type="submit" id="footstep_form-submit" value="完成"></div>
+        </form>
+    </div>
+</div>

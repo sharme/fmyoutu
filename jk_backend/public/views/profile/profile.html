@@ -1,0 +1,86 @@
+<div>
+    <!--<div class="profile_top-edit">-->
+        <!--<div class="profile_top-edit-info">-->
+            <!--<p><span class="profile_top-edit-info-name">{{userProfile[0].u_name}}</span></p>-->
+            <!--<button ng-click="editProfileBtn()">编辑</button>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div>
+        <div class="profile_middle">
+            <div class="profile_middle-point" ng-click="profileFootsteps(userProfile[0].u_id)">
+                {{userProfile[0].footsteps?userProfile[0].footsteps:0}}<br>我的分享</div>
+            <div class="profile_middle-point" ng-click="profileSticks(userProfile[0].u_id)">
+                {{userProfile[0].sticks?userProfile[0].sticks:0}}<br>
+                想去
+            </div>
+            <div class="profile_middle-point" ng-click="profileFollows(userProfile[0].u_id)">
+                {{userProfile[0].follows?userProfile[0].follows:0}}<br>
+                关注
+            </div>
+            <div class="profile_middle-point" ng-click="profileFans(userProfile[0].u_id)">
+                {{userProfile[0].fans?userProfile[0].fans:0}}<br>
+                粉丝
+            </div>
+        </div>
+    </div>
+
+    <div>
+
+    </div>
+
+
+
+
+<div style="min-height: 400px;">
+    <div id="footstep-list" class="footstep-list" infinite-scroll="loadMore()" infinite-scroll-distance="1" infinite-scroll-disabled="isbusy" infinite-scroll-immediate-check="true">
+        <div class="profile_down-create" ng-click="createBtn()">有图分享</div>
+        <div id="footstep-list-div" class="footstep-list-div bgColorChange{{result.fs_id}}" ng-mouseleave="bgColorRemove(result.fs_id)" ng-mouseenter="bgColorChange(result.fs_id)" ng-repeat="result in footsteps" >
+            <div class="footstep-list-div-pic">
+                <!--<div class="footstep_div-pic" style="background-image: url({{result.fs_pic}});">-->
+               <a href="#/foot/{{result.fs_id}}"> <img ng-src="{{result.fs_smallImg}}"></a>
+            </div>
+            <div class="footstep-list-div_info">
+            <span class="footstep-list-div-createTime">{{result.fs_create_time | date: 'yyyy-MM-dd HH:mm'}}</span>
+            <!--<hr>-->
+            <div class="footstep-list-div-desc">
+                <div>
+                    <p class="footstep-list-div-desc_info">{{result.fs_des}}</p>
+                    <p style="color: grey;">{{result.fs_from}}</p>
+                    <div>
+                        想去: {{result.sticks}}
+                        喜欢: {{result.likes}}
+                    </div>
+                    <!--<div>-->
+                        <!--<button class="stick-footstep" ng-click="stickBtn(result.fs_id)">收藏</button>&nbsp;&nbsp;{{result.sticks}}-->
+                        <!--<button class="like-footstep" ng-click="likeBtn(result.fs_id)">喜欢</button>&nbsp;&nbsp;{{result.likes}}-->
+                    <!--</div>-->
+                </div>
+            </div>
+
+            <div class="footstep-list-div-comment" ng-if="result.cm_content">
+                <div class="footstep-list-div-comment-avatar">
+                    <img ng-src="{{result.u_avatar}}" class="footstep-list-div-comment-avatar-img">
+                </div>
+                <div class="footstep-list-div-comment-content">
+                    <div>{{result.u_name}}</div>
+                    <div style="overflow-wrap: break-word;" ng-bind-html="result.cm_content"></div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!--<div class="footstep-list_profile_end"></div>-->
+    </div>
+
+
+    <div class="follow-list">
+        <div ng-repeat="result in results">
+            <div class="follow-list-div-comment-avatar">
+                <img ng-src="{{result.u_avatar?result.u_avatar:'../../img/default_icon.png'}}" class="follow-list-div-comment-avatar-img" title="{{result.u_name}}">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>

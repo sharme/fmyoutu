@@ -1,0 +1,10 @@
+<div>
+    <div class="message">
+        <span class="closeTopic" ng-click="closeTopic()">X</span>
+        <form ng-controller="MessageController" method="POST" ng-submit="submit()">
+        <div class="message-title"><p>小伙伴们, 如果你有任何问题或者建议, 快点提建议吧. {{'welcome' | reverse: true}} </p></div>
+        <p><textarea class="message-content" cols="60" rows="15" ng-model="message.m_content"></textarea></p>
+        <input type="submit" class="message-submit" value="创建">
+        </form>
+    </div>
+</div>

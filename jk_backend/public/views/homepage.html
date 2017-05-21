@@ -1,0 +1,84 @@
+
+<div class="explore">
+    <div class="explore_where">
+        <input type="text" id="tagValue" ng-keypress="tagFilter()" style="border: solid 1px #43c17e;" placeholder="告诉我具体图片相关字 例如: 古镇, 西藏，臭豆腐"><button ng-click="tagFilter()">搜索一下</button>
+    </div>
+    <div class="explore_recommend">推荐的图片</div>
+</div>
+
+<div id="footstep-list" class="footstep_list_home" infinite-scroll="loadMore()" infinite-scroll-distance="2" infinite-scroll-disabled="isbusy" infinite-scroll-immediate-check="false">
+
+    <div id="footstep-list-div" class="footstep-list-div bgColorChange{{result.fs_id}}" ng-repeat="result in footsteps" ng-mouseleave="bgColorRemove(result.fs_id)" ng-mouseenter="bgColorChange(result.fs_id)">
+            <div class="footstep-list-div-tag">
+                <img ng-if="result.u_tag" ng-src="{{result.u_tag}}">
+                <img ng-if="!result.u_tag" src="../../img/no-image-available.png">
+            </div>
+            <div class="footstep-list-div-pic" ng-click="loginCheck(result.fs_id)" ng-if="result.fs_id">
+                <!--<a href="#/foot/{{result.fs_id}}">-->
+                    <img ng-src="{{result.fs_smallImg}}">
+                <!--</a>-->
+            </div>
+            <div class="footstep-list-div_info">
+            <span class="footstep-list-div-createTime">{{result.fs_create_time | date: 'yyyy-MM-dd HH:mm'}}</span>
+            <!--<hr>-->
+            <div class="footstep-list-div-desc" ng-if="result.fs_id">
+                <div>
+                    <p class="footstep-list-div-desc_info">{{result.fs_des}}</p>
+                    <!--<p style="color: grey;">{{result.fs_from}}</p>-->
+                    <span>
+                        <button class="stick-footstep btnStick{{result.fs_id}}"  style={{result.stick_status==1?"background-color:#43c17e;":""}} ng-click="stickBtn(result.fs_id, result.u_id)">想去</button>&nbsp;&nbsp;<span class="btnStickNum{{result.fs_id}}">{{result.sticks}}</span>
+                        <button class="like-footstep btnLike{{result.fs_id}}" style={{result.like_status==1?"background-color:#43c17e;":""}} ng-click="likeBtn(result.fs_id, result.u_id)">去过</button>&nbsp;&nbsp;<span class="btnLikeNum{{result.fs_id}}">{{result.likes}}</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="footstep-list-div-comment" ng-if="result.cm_content" ng-if="result.fs_id">
+                    <div class="footstep-list-div-comment-avatar">
+                        <img ng-src="{{result.u_avatar}}" ng-if="result.u_avatar" class="footstep-list-div-comment-avatar-img">
+                        <img ng-src="{{result.u_avatar}}" ng-if="!result.u_avatar" src='../../img/default_icon.png' class="footstep-list-div-comment-avatar-img">
+
+                    </div>
+                    <div>
+                        <div>{{result.u_name}}</div>
+                        <div class="footstep-list-div-comment-content" ng-bind-html="result.cm_content"></div>
+                    </div>
+            </div>
+            </div>
+
+            <div ng-if="!result.fs_id" class="footstep-list-div-end">
+                <a href="#/footsteps/add">点我上图</a>
+            </div>
+
+    </div>
+
+
+    <div class="footstep-list_end"></div>
+
+</div>
+
+
+
+<div class="recommend">
+    <div class="recommend_title">最新推荐</div>
+    <div class="recommend_main" ng-repeat="new in newest">
+        <a href="#/foot/{{new.fs_id}}">
+        <div class="recommend_main_pic" ng-click="loginCheck(new.fs_id)" ng-if="new.fs_id" style="cursor: pointer; background-image: url({{new.fs_smallImg}})">
+            <!--<img src="{{new.fs_smallImg}}">-->
+        </div>
+        <div class="recommend_main_desc">
+            {{new.fs_des}}
+        </div>
+        </a>
+    </div>
+    <div class="recommend_main_pic" style="background-image: url({{new.fs_smallImg}})">
+    </div>
+    <div class="recommend_main_desc" style="height: 100px;">
+    </div>
+</div>
+
+
+
+
+
+
+<div id="bottom-div"></div>
