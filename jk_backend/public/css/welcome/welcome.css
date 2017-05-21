@@ -105,3 +105,53 @@
   float: right;
   padding: 10% 20%;
 }
+#register-content .register-content-wrapper .register-content-wrapper-desc .welcome_storyStart {
+  margin-left: 48%;
+  font-size: 30px;
+  color: burlywood;
+  margin-bottom: 50px;
+}
+#register-content .register-content-wrapper .register-content-wrapper-desc .welcome_story {
+  margin-left: 35%;
+  position: absolute;
+  width: 60%;
+}
+#register-content .register-content-wrapper .register-content-wrapper-desc .welcome_story .welcome_story_where {
+  width: 120px;
+  height: 60px;
+  text-align: center;
+  border: solid 2px red;
+  border-radius: 30%;
+  line-height: 3;
+  font-size: 16px;
+  float: left;
+  margin-right: 10%;
+}
+#register-content .register-content-wrapper .register-content-wrapper-desc .welcome_story .welcome_story_people {
+  float: left;
+  width: 20%;
+  margin-top: 100px;
+  text-align: center;
+}
+#register-content .register-content-wrapper .register-content-wrapper-desc .welcome_story .welcome_story_people img {
+  width: 150px;
+}
+#register-content .register-content-wrapper .register-content-wrapper-desc .welcome_story .welcome_story_eat {
+  width: 120px;
+  height: 60px;
+  text-align: center;
+  border: solid 2px red;
+  border-radius: 30%;
+  line-height: 3;
+  font-size: 16px;
+  float: left;
+  margin-left: 10%;
+}
+#register-content .register-content-wrapper .register-content-wrapper-desc .welcome_storyTitle {
+  float: left;
+  position: absolute;
+  margin-left: 42%;
+  margin-top: 30%;
+  font-size: 40px;
+  color: darkseagreen;
+}
