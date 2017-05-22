@@ -14,7 +14,6 @@
 }
 #register-content .register-content-wrapper {
   padding: 30px;
-  max-width: 1280px;
   margin: 0 auto;
   text-align: left;
 }
@@ -98,7 +97,6 @@
 }
 #register-content .register-content-wrapper .register-content-wrapper-desc {
   width: 100%;
-  min-height: 600px;
 }
 #register-content .register-content-wrapper .register-content-wrapper-desc .register-content-wrapper-desc-words {
   font-size: 18px;
