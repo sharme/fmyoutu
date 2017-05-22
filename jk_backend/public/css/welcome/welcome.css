@@ -120,10 +120,10 @@
   width: 120px;
   height: 60px;
   text-align: center;
-  border: solid 2px red;
   border-radius: 30%;
+  font-size: 30px;
+  color: darkgray;
   line-height: 3;
-  font-size: 16px;
   float: left;
   margin-right: 10%;
 }
@@ -134,16 +134,16 @@
   text-align: center;
 }
 #register-content .register-content-wrapper .register-content-wrapper-desc .welcome_story .welcome_story_people img {
-  width: 150px;
+  width: 70px;
 }
 #register-content .register-content-wrapper .register-content-wrapper-desc .welcome_story .welcome_story_eat {
   width: 120px;
   height: 60px;
   text-align: center;
-  border: solid 2px red;
+  font-size: 30px;
+  color: darkgray;
   border-radius: 30%;
   line-height: 3;
-  font-size: 16px;
   float: left;
   margin-left: 10%;
 }
@@ -151,7 +151,7 @@
   float: left;
   position: absolute;
   margin-left: 42%;
-  margin-top: 30%;
-  font-size: 40px;
+  margin-top: 20%;
+  font-size: 20px;
   color: darkseagreen;
 }

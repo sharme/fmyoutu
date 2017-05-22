@@ -1,4 +1,13 @@
 
+# Github
+
+
+
+
+
+
+
+
 # NGINX
 
 #sudo service nginx start
@@ -59,9 +68,6 @@
 # forever restart
 # forever list
 # forever -h
-
-
-
 
 
 
@@ -132,5 +138,8 @@
 
 
 # forever start bin/www
+
+
+
 
 
