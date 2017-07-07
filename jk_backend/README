@@ -27,9 +27,7 @@
 #mysql connection
 #mysql.server start
 #mysql -u root -p
-
-
-
+#mysqladmin -u root -p password mypasswd
 
 # QINIU
 

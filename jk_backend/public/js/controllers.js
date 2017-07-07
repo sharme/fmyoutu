@@ -156,6 +156,9 @@ buybsControllers.controller('FootstepsListCtrl', ['$scope', '$http', '$cookies',
 
   // $('.explore').css('display','block');
 
+
+
+
   $http({method: 'GET', url: ipAddress + '/footsteps/getFootsteps', params:{index_start: 0, count: 3, u_id: $cookies.get('u_id')}})
       .success(function(data){
         $scope.newest = data;

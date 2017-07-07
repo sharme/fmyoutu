@@ -110,9 +110,9 @@
   margin-bottom: 50px;
 }
 #register-content .register-content-wrapper .register-content-wrapper-desc .welcome_story {
-  margin-left: 35%;
+  margin-left: 45%;
   position: absolute;
-  width: 60%;
+  width: 52%;
 }
 #register-content .register-content-wrapper .register-content-wrapper-desc .welcome_story .welcome_story_where {
   width: 120px;
@@ -123,7 +123,6 @@
   color: darkgray;
   line-height: 3;
   float: left;
-  margin-right: 10%;
 }
 #register-content .register-content-wrapper .register-content-wrapper-desc .welcome_story .welcome_story_people {
   float: left;
@@ -147,9 +146,7 @@
 }
 #register-content .register-content-wrapper .register-content-wrapper-desc .welcome_storyTitle {
   float: left;
-  position: absolute;
-  margin-left: 42%;
-  margin-top: 20%;
+  margin: 8%;
   font-size: 20px;
   color: darkseagreen;
 }
