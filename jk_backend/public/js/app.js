@@ -14,6 +14,12 @@ var buybs = angular.module('jk_backend', [
 // you might call this after your module initalization
 // angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 500);
 
+buybs.controller('defaultCtrl', function($scope) {
+
+    $scope.sizeM = true;
+    
+});
+
 
 buybs.config(function($routeProvider, $cssProvider){
 
@@ -23,6 +29,8 @@ buybs.config(function($routeProvider, $cssProvider){
             desktop: '(min-width: 600px)'
         }
     });
+    
+    
 
     $routeProvider.
     when('/', {
@@ -325,6 +333,19 @@ buybs.config(function($routeProvider, $cssProvider){
             }
         ]
     }).
+    when('/adv/index',{
+        templateUrl: 'views/adv/index.html'
+        // ,
+        // css: [
+        //     {
+        //         href: '../css/tuyou/tuyou-m.css',
+        //         breakpoint: 'mobile'
+        //     }, {
+        //         href: '../css/tuyou/tuyou.css',
+        //         breakpoint: 'desktop'
+        //     }
+        // ]
+    }).
     when('/tuyou/match',{
         templateUrl: 'views/tuyou/match.html',
         controller: 'matchCtrl',
@@ -340,3 +361,5 @@ buybs.config(function($routeProvider, $cssProvider){
     });
 
 });
+
+

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html ng-app="jk_backend">
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
-<head>
+<head ng-controller="defaultCtrl">
   <title>有图</title>
   <link rel="icon" type="image/gif/png" href="img/youtu.png">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" type="text/css" href="css/default.css">
-  <link rel="stylesheet" type="text/css" href="css/default-m.css">
+  <link rel="stylesheet" type="text/css" href="css/default.css" ng-if="true">
+  <link rel="stylesheet" type="text/css" href="css/default-m.css" ng-if="false">
   <link rel="stylesheet" href="css/zoom.css">
   <link rel="stylesheet" href="css/jquery-ui.min.css">
     <!-- Link Swiper's CSS -->
@@ -48,10 +48,14 @@
 
 <div id="header" class="header" ng-controller="headerController">
   <a href="#/" class="header-site"><img src="img/youtu.png" style="width: 40px;height: 40px;"></a>
-  <a ng-click="homepageBtn()" href="javascript: void(0);" class="header-homepage">找图片...</a>
-  <a href="#/community/index" class="header-homepage" ng-click="msgShow()">论坛区</a>
-  <!--<a href="#/tuyou/index" class="header-homepage">找图友</a>-->
-  <div class="header-right" ng-controller="LoginController">
+  <a ng-click="homepageBtn()" href="javascript: void(0);" class="header-homepage"><div class="header-div-style">旅行分享</div></a>
+  <a href="#/community/index" class="header-homepage" ng-click="msgShow()"><div class="header-div-style">提问交流</div></a>
+  <a href="#/adv/index" class="header-homepage"><div class="header-div-style">你的旅行</div></a>
+    <div class="qr_fmyoutu">
+        <div style="text-align: center; font-weight: bold;">微信交友</div>
+        <img src="img/QR_fmyoutu.png" style="width:80px;margin: 5px 15px;">
+    </div>
+    <div class="header-right" ng-controller="LoginController">
     <div class="header-right-logout">
     <span id="login_username"></span><span style="line-height: 2;">| <a ng-click="logout()" href="javascript: void(0);">登出</a></span>
     </div>
@@ -127,6 +131,7 @@
 
   });
 </script>
+
 
 </body>
 
