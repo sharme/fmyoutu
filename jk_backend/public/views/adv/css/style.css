@@ -46,9 +46,13 @@ h5 {
   padding-top: 22px;
 }
 
-#home {
-  display: none;
-}
+/*#home {*/
+  /*display: none;*/
+/*}*/
+
+/*.site-slider {*/
+  /*display: none;*/
+/*}*/
 
 .heading {
   color: #000000;

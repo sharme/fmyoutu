@@ -24,6 +24,9 @@ buybs.controller('defaultCtrl', function($scope) {
 buybs.config(function($routeProvider, $cssProvider){
 
     angular.extend($cssProvider.defaults, {
+
+
+
         breakpoints: {
             mobile: '(max-width: 550px)',
             desktop: '(min-width: 600px)'
@@ -45,14 +48,14 @@ buybs.config(function($routeProvider, $cssProvider){
         //         breakpoint: 'desktop'
         //     }
         // ]
-        templateUrl: 'views/welcome/welcome.html',
-        controller: 'EmailRegistrationCtrl',
+        templateUrl: 'views/adv/index.html',
+        // controller: 'EmailRegistrationCtrl',
         css: [
             {
-                href: '../css/welcome/welcome-m.css',
+                href: '../views/adv/css/style.css',
                 breakpoint: 'mobile'
             }, {
-                href: '../css/welcome/welcome.css',
+                href: '../views/adv/css/style.css',
                 breakpoint: 'desktop'
             }
         ]
