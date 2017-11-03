@@ -1,9 +1,13 @@
 
-<div class="explore">
-    <div class="explore_where">
-        <input type="text" id="tagValue" ng-keypress="tagFilter()" style="border: solid 1px #43c17e;" placeholder="告诉我具体图片相关字 例如: 古镇, 西藏，臭豆腐"><button ng-click="tagFilter()">搜索一下</button>
-    </div>
-    <div class="explore_recommend">推荐的图片</div>
+<!--<div class="explore">-->
+    <!--<div class="explore_where">-->
+        <!--<input type="text" id="tagValue" ng-keypress="tagFilter()" style="border: solid 1px #43c17e;" placeholder="告诉我具体图片相关字 例如: 古镇, 西藏，臭豆腐"><button ng-click="tagFilter()">搜索一下</button>-->
+    <!--</div>-->
+    <!--<div class="explore_recommend">推荐的图片</div>-->
+<!--</div>-->
+
+<div style="text-align: center; margin: 10px; font-size: 20px; color: green;">
+    用有图来创造有意思的照片！胖的, 瘦的, 高的, 矮的. 你看着办！一起<a href="#/tool/pixel">免费创作!!!</a>
 </div>
 
 <div id="footstep-list" class="footstep_list_home" infinite-scroll="loadMore()" infinite-scroll-distance="2" infinite-scroll-disabled="isbusy" infinite-scroll-immediate-check="false">
@@ -26,8 +30,8 @@
                     <p class="footstep-list-div-desc_info">{{result.fs_des}}</p>
                     <!--<p style="color: grey;">{{result.fs_from}}</p>-->
                     <span>
-                        <button class="stick-footstep btnStick{{result.fs_id}}"  style={{result.stick_status==1?"background-color:#43c17e;":""}} ng-click="stickBtn(result.fs_id, result.u_id)">想去</button>&nbsp;&nbsp;<span class="btnStickNum{{result.fs_id}}">{{result.sticks}}</span>
-                        <button class="like-footstep btnLike{{result.fs_id}}" style={{result.like_status==1?"background-color:#43c17e;":""}} ng-click="likeBtn(result.fs_id, result.u_id)">去过</button>&nbsp;&nbsp;<span class="btnLikeNum{{result.fs_id}}">{{result.likes}}</span>
+                        <button class="stick-footstep btnStick{{result.fs_id}}"  style={{result.stick_status==1?"background-color:#43c17e;":""}} ng-click="stickBtn(result.fs_id, result.u_id)">喜欢</button>&nbsp;&nbsp;<span class="btnStickNum{{result.fs_id}}">{{result.sticks}}</span>
+                        <button class="like-footstep btnLike{{result.fs_id}}" style={{result.like_status==1?"background-color:#43c17e;":""}} ng-click="likeBtn(result.fs_id, result.u_id)">不错</button>&nbsp;&nbsp;<span class="btnLikeNum{{result.fs_id}}">{{result.likes}}</span>
                     </span>
                 </div>
             </div>
@@ -46,7 +50,7 @@
             </div>
 
             <div ng-if="!result.fs_id" class="footstep-list-div-end">
-                <a href="#/footsteps/add">点我上图</a>
+                <a href="#/tool/pixel">开始裁剪</a>
             </div>
 
     </div>

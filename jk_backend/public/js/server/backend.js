@@ -1,4 +1,5 @@
 
+// var ipaddress = 'http://localhost:8080';
 var ipaddress = 'http://180.76.152.112';
 
 var menuId = $( "ul.nav" ).first().attr( "id" );

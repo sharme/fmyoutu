@@ -245,6 +245,19 @@ buybs.config(function($routeProvider, $cssProvider){
             }
         ]
     }).
+    when('/tool/pixel',{
+        templateUrl: 'views/ptool/tool.html',
+        controller: 'pixelController',
+        css: [
+            {
+                href: '../css/tool/pixel-m.css',
+                breakpoint: 'mobile'
+            }, {
+                href: '../css/tool/pixel.css',
+                breakpoint: 'desktop'
+            }
+        ]
+    }).
     when('/message',{
         templateUrl: 'views/message/message.html',
         controller: 'MessageController',

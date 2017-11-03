@@ -20,6 +20,7 @@
   <!--<script src="js/common/less.min.js"></script>-->
   <!--<script>less.watch();</script>-->
   <script src="../js/common/jquery.min.js"></script>
+  <!--<script src="../js/common/jscolor.min.js"></script>-->
   <script src="../js/common/angular.min.js"></script>
   <script src="../js/common/angular-cookies.min.js"></script>
   <script src="../js/common/angular-route.min.js"></script>
@@ -48,13 +49,16 @@
 
 <div id="header" class="header" ng-controller="headerController">
   <a href="#/" class="header-site"><img src="img/youtu.png" style="width: 40px;height: 40px;"></a>
-  <a ng-click="homepageBtn()" href="javascript: void(0);" class="header-homepage"><div class="header-div-style">旅行分享</div></a>
-  <a href="#/community/index" class="header-homepage" ng-click="msgShow()"><div class="header-div-style">提问交流</div></a>
-  <a href="#/adv/index" class="header-homepage"><div class="header-div-style">你的旅行</div></a>
-    <div class="qr_fmyoutu">
-        <!--<div style="text-align: center; font-weight: bold;">&nbsp;联系我</div>-->
-        <img src="img/QR_fmyoutu.png" style="width:80px;margin: 5px 12px;">
-    </div>
+  <a ng-click="homepageBtn()" href="javascript: void(0);" class="header-homepage"><div class="header-div-style">裁缝们的图片</div></a>
+  <!--<a href="#/community/index" class="header-homepage" ng-click="msgShow()"><div class="header-div-style">提问交流</div></a>-->
+  <!--<a href="#/adv/index" class="header-homepage"><div class="header-div-style">你的旅行</div></a>-->
+    <!--<a href="#/tool/pixel" class="header-homepage"><div class="header-div-style">图裁剪</div></a>-->
+
+    <!--<div class="qr_fmyoutu">-->
+        <!--&lt;!&ndash;<div style="text-align: center; font-weight: bold;">&nbsp;联系我</div>&ndash;&gt;-->
+        <!--<img src="img/QR_fmyoutu.png" style="width:80px;margin: 5px 12px;">-->
+    <!--</div>-->
+
     <div class="header-right" ng-controller="LoginController">
     <div class="header-right-logout">
     <span id="login_username"></span><span style="line-height: 2;">| <a ng-click="logout()" href="javascript: void(0);">登出</a></span>
@@ -84,9 +88,9 @@
   </div>
 
 </div>
-<a href="#/footsteps/add">
+<a href="#/tool/pixel">
 <div class="share">
-    我也要分享
+    我也要裁剪图片
 </div>
 </a>
 <div class="view-container">

@@ -6,6 +6,7 @@ var auth = require('./auth.js');
 var fs = require('fs');
 var qiniu = require("qiniu");
 var busboy = require('connect-busboy');
+var multipart = require('connect-multiparty');
 var easyimg = require('easyimage');
 var md5 = require("blueimp-md5");
 var http = require('http');
@@ -34,16 +35,45 @@ var date = new Date();
 
 var smallSize = 420;  // 286 the original size
 var bigSize = 860;   // 680 the original size
+var widthPixel = 0;
+var heightPixel = 0;
+
+var multipartMiddleware = multipart();
 // Upload file and response back.
 router.post('/uploadPhotos', function(req, res) {
 
     var fstream;
     req.pipe(req.busboy);
-    var folder = '';
+    var folder = JSON.stringify(req.body.u_id);
+    // widthPixel = JSON.stringify(req.body.widthPixel);
+    // heightPixel = JSON.stringify(req.body.heightPixel);
+    // console.log('heightPixel:' + heightPixel);
+    // console.log("body: " + JSON.stringify(req.body));
+
     req.busboy.on('field', function(fieldname, val){
-        folder = val;
-        console.log(fieldname + ": " + folder);
+        
+        if(fieldname == 'u_id')
+            folder = val;
+        if(fieldname == 'widthPixel')
+            widthPixel = val;
+        if(fieldname == 'heightPixel')
+            heightPixel = val;
+        
+        console.log(fieldname + ": " + val);
     });
+
+    // req.busboy.on('widthPixel', function(widthPixel, val){
+    //     widthPixel = val;
+    //     console.log("widthPixel : " + widthPixel);
+    //     //console.log(fieldname + ": " + folder);
+    // });
+    
+    // req.busboy.on('heightPixel', function(heightPixel, val){
+    //     heightPixel = val;
+    //     console.log("heightPixel : " + heightPixel);
+    //     //console.log(fieldname + ": " + folder);
+    // });
+
     req.busboy.on('file', function (fieldname, file, filename) {
         console.log("Upload data: " + JSON.stringify(file) + ",folder = " + folder);
         filename = new Date().getTime() + filename.substr(filename.lastIndexOf("."));
@@ -51,7 +81,16 @@ router.post('/uploadPhotos', function(req, res) {
         var originalFolderPath = __dirname.substr(0, __dirname.length - 7) + "/public/images/original/" + folder;
         var smallFolderPath = __dirname.substr(0, __dirname.length - 7) + "/public/images/small/" + folder;
         var bigFolderPath = __dirname.substr(0, __dirname.length - 7) + "/public/images/big/" + folder;
+        var customPath = __dirname.substr(0, __dirname.length - 7) + "/public/images/custom/" + folder;
 
+        fs.exists(customPath, function(result){
+            if(!result) {
+                fs.mkdir(customPath, 0777, function(result){
+                        console.log("custom mkdir: " + result);
+                });
+            }
+        });
+        
 
         fs.exists(originalFolderPath, function(result){
             if(result) {
@@ -60,11 +99,11 @@ router.post('/uploadPhotos', function(req, res) {
                 fstream.on('close', function () {
                     fs.exists(smallFolderPath, function(result){
                         if(result) {
-                            resize(filename, folder, smallFolderPath, originalFolderPath, bigFolderPath, smallSize, res);
+                            resize(filename, folder, smallFolderPath, originalFolderPath, bigFolderPath, smallSize, res, customPath, widthPixel, heightPixel);
                         } else {
                             fs.mkdir(smallFolderPath, 0777, function(result){
                                 if(result){
-                                    resize(filename, folder, smallFolderPath, originalFolderPath, bigFolderPath, smallSize, res);
+                                    resize(filename, folder, smallFolderPath, originalFolderPath, bigFolderPath, smallSize, res, customPath, widthPixel, heightPixel);
                                 } else {
                                     console.log(result);
                                 }
@@ -81,11 +120,11 @@ router.post('/uploadPhotos', function(req, res) {
                        fstream.on('close', function () {
                            fs.exists(smallFolderPath, function(result){
                                if(result) {
-                                   resize(filename, folder, smallFolderPath, originalFolderPath, bigFolderPath, smallSize, res);
+                                   resize(filename, folder, smallFolderPath, originalFolderPath, bigFolderPath, smallSize, res, customPath, widthPixel, heightPixel);
                                } else {
                                    fs.mkdir(smallFolderPath, 0777, function(result){
                                        if(result){
-                                           resize(filename, folder, smallFolderPath, originalFolderPath, bigFolderPath, smallSize, res);
+                                           resize(filename, folder, smallFolderPath, originalFolderPath, bigFolderPath, smallSize, res, customPath, widthPixel, heightPixel);
                                        } else {
                                            console.log(result);
                                        }
@@ -102,6 +141,202 @@ router.post('/uploadPhotos', function(req, res) {
 
     });
 });
+
+
+function updateSmallFileQiniu (folder, small, smallPath, big, bigPath, res) {
+    //构建上传策略函数
+    function uptoken(bucket, small) {
+        var putPolicy = new qiniu.rs.PutPolicy(bucket+":"+small);
+        return putPolicy.token();
+    }
+
+    //生成上传 Token
+    token = uptoken(bucket, small);
+
+    //要上传文件的本地路径
+    filePath = smallPath;
+
+    //构造上传函数
+    function uploadFile(folder, uptoken, key, localFile) {
+        var extra = new qiniu.io.PutExtra();
+        qiniu.io.putFile(uptoken, key, localFile, extra, function(err, ret) {
+            if(!err) {
+                // 上传成功， 处理返回值
+                console.log(ret.hash, ret.key, ret.persistentId);
+              
+                
+                if(big == null || bigPath == null){
+                    res.send("http://o99spo2ev.bkt.clouddn.com/" + key);
+                } else {
+                    updateBigFileQiniu(folder, big, bigPath, res, "http://o99spo2ev.bkt.clouddn.com/" + key);
+                }
+
+            } else {
+                // 上传失败， 处理返回代码
+                console.log(err);
+            }
+        });
+    }
+
+//调用uploadFile上传
+    uploadFile(folder, token, small, filePath);
+
+}
+
+function updateCustomFileQiniu (folder, small, smallPath, big, bigPath, res) {
+    
+    console.log('custom Qiniu: '  + folder + ", small: " + small + " , smallPath: " + smallPath);
+    
+    //构建上传策略函数
+    function uptoken(bucket, small) {
+        var putPolicy = new qiniu.rs.PutPolicy(bucket+":"+small);
+        return putPolicy.token();
+    }
+
+    //生成上传 Token
+    token = uptoken(bucket, small);
+
+    //要上传文件的本地路径
+    filePath = smallPath;
+
+    //构造上传函数
+    function uploadFile(folder, uptoken, key, localFile) {
+        var extra = new qiniu.io.PutExtra();
+        qiniu.io.putFile(uptoken, key, localFile, extra, function(err, ret) {
+            if(!err) {
+                // 上传成功， 处理返回值
+                console.log(ret.hash, ret.key, ret.persistentId);
+
+
+                if(big == null || bigPath == null){
+                    res.send("http://o99spo2ev.bkt.clouddn.com/" + key);
+                } else {
+                    updateBigFileQiniu(folder, big, bigPath, res, "http://o99spo2ev.bkt.clouddn.com/" + key);
+                }
+
+            } else {
+                // 上传失败， 处理返回代码
+                console.log(err);
+            }
+        });
+    }
+
+//调用uploadFile上传
+    uploadFile(folder, token, small, filePath);
+
+}
+
+function updateBigFileQiniu (folder, key, path, res, smallImg) {
+    //构建上传策略函数
+    function uptoken(bucket, key) {
+        var putPolicy = new qiniu.rs.PutPolicy(bucket+":"+key);
+        return putPolicy.token();
+    }
+
+    //生成上传 Token
+    token = uptoken(bucket, key);
+
+    //要上传文件的本地路径
+    filePath = path;
+
+    //构造上传函数
+    function uploadFile(folder, uptoken, key, localFile) {
+        var extra = new qiniu.io.PutExtra();
+        qiniu.io.putFile(uptoken, key, localFile, extra, function(err, ret) {
+            if(!err) {
+                // 上传成功， 处理返回值
+                console.log(ret.hash, ret.key, ret.persistentId);
+                
+                var data = {
+                    "bigImg": "http://o99spo2ev.bkt.clouddn.com/" + key,
+                    "smallImg": smallImg
+                };
+                
+                console.log('uploaded = ' + JSON.stringify(data));
+
+                //insert uploaded image url to database.
+                var sql = mysql.format("insert into jk_pictures(u_id,pc_smallImg,pc_bigImg,pc_original,pc_update_time) values(?,?,?,?,?)",[folder,data.smallImg,data.bigImg,null,date]);
+                console.log(sql);
+                connection.query(sql, function (err, result) {
+                        console.log(result);
+                });
+                
+                res.send(data);
+            } else {
+                // 上传失败， 处理返回代码
+                console.log(err);
+            }
+        });
+    }
+
+//调用uploadFile上传
+    uploadFile(folder, token, key, filePath);
+
+}
+
+function resize(filename, folder, smallFolderPath, originalFolderPath, bigFolderPath, size, res, customPath, widthPixel, heightPixel) {
+    
+    console.log('resize');
+    
+    if(widthPixel > 0 && heightPixel > 0) {
+        
+        console.log('custom resize');
+        
+        easyimg.resize(
+            {
+                src: originalFolderPath + "/" + filename, dst: customPath + "/" + filename, width: widthPixel, height: heightPixel
+            }
+        ).then(
+            function(image) {
+                updateCustomFileQiniu(folder, "images/custom/" + folder + "/" + filename, customPath + "/" + filename, null, null, res);
+                
+            }
+        );
+    }
+    
+    console.log("resize more");
+    
+    if(smallFolderPath != null && bigFolderPath != null) {
+
+        easyimg.resize({
+            src: originalFolderPath + "/" + filename, dst: bigFolderPath + "/" + filename, width: bigSize
+        }).then(
+            function (image) {
+                console.log('resize Big image: ' + image.width);
+               
+                easyimg.resize({
+                    src: bigFolderPath + "/" + filename, dst: smallFolderPath + "/" + filename, width: size
+                }).then(
+                    function (image) {
+                        console.log('resize small image: ' + image.width);
+
+                        updateSmallFileQiniu(folder, "images/small/" + folder + "/" + filename, smallFolderPath + "/" + filename, "images/big/" + folder + "/" + filename, bigFolderPath + "/" + filename, res);
+
+                    }
+                );
+            }
+        );
+    } else if(smallFolderPath != null && bigFolderPath == null) {
+        easyimg.resize({
+            src: originalFolderPath + "/" + filename, dst: smallFolderPath + "/" + filename, width: size
+        }).then(
+            function (image) {
+                console.log('resize mini image: ' + image.width);
+                
+                updateSmallFileQiniu(folder, "images/mini/" + folder + "/" + filename, smallFolderPath + "/" + filename, null, null, res);
+
+            }
+        );
+    }
+
+
+}
+
+
+
+
+
+
 
 // Upload file and response back.
 router.post('/uploadAvatar', function(req, res) {
@@ -171,132 +406,30 @@ router.post('/uploadAvatar', function(req, res) {
     });
 });
 
-function updateSmallFileQiniu (folder, small, smallPath, big, bigPath, res) {
-    //构建上传策略函数
-    function uptoken(bucket, small) {
-        var putPolicy = new qiniu.rs.PutPolicy(bucket+":"+small);
-        return putPolicy.token();
-    }
-
-    //生成上传 Token
-    token = uptoken(bucket, small);
-
-    //要上传文件的本地路径
-    filePath = smallPath;
-
-    //构造上传函数
-    function uploadFile(folder, uptoken, key, localFile) {
-        var extra = new qiniu.io.PutExtra();
-        qiniu.io.putFile(uptoken, key, localFile, extra, function(err, ret) {
-            if(!err) {
-                // 上传成功， 处理返回值
-                console.log(ret.hash, ret.key, ret.persistentId);
-              
-                
-                if(big == null || bigPath == null){
-                    res.send("http://o99spo2ev.bkt.clouddn.com/" + key);
-                } else {
-                    updateBigFileQiniu(folder, big, bigPath, res, "http://o99spo2ev.bkt.clouddn.com/" + key);
-                }
-
-            } else {
-                // 上传失败， 处理返回代码
-                console.log(err);
-            }
-        });
-    }
-
-//调用uploadFile上传
-    uploadFile(folder, token, small, filePath);
-
-}
-
-function updateBigFileQiniu (folder, key, path, res, smallImg) {
-    //构建上传策略函数
-    function uptoken(bucket, key) {
-        var putPolicy = new qiniu.rs.PutPolicy(bucket+":"+key);
-        return putPolicy.token();
-    }
-
-    //生成上传 Token
-    token = uptoken(bucket, key);
-
-    //要上传文件的本地路径
-    filePath = path;
-
-    //构造上传函数
-    function uploadFile(folder, uptoken, key, localFile) {
-        var extra = new qiniu.io.PutExtra();
-        qiniu.io.putFile(uptoken, key, localFile, extra, function(err, ret) {
-            if(!err) {
-                // 上传成功， 处理返回值
-                console.log(ret.hash, ret.key, ret.persistentId);
-                
-                var data = {
-                    "bigImg": "http://o99spo2ev.bkt.clouddn.com/" + key,
-                    "smallImg": smallImg
-                };
-                
-                console.log('uploaded = ' + JSON.stringify(data));
-
-                //insert uploaded image url to database.
-                var sql = mysql.format("insert into jk_pictures(u_id,pc_smallImg,pc_bigImg,pc_original,pc_update_time) values(?,?,?,?,?)",[folder,data.smallImg,data.bigImg,null,date]);
-                console.log(sql);
-                connection.query(sql, function (err, result) {
-                        console.log(result);
-                });
 
 
-                res.send(data);
-            } else {
-                // 上传失败， 处理返回代码
-                console.log(err);
-            }
-        });
-    }
-
-//调用uploadFile上传
-    uploadFile(folder, token, key, filePath);
-
-}
-
-function resize(filename, folder, smallFolderPath, originalFolderPath, bigFolderPath, size, res) {
-    
-    if(smallFolderPath != null && bigFolderPath != null) {
-
-        easyimg.resize({
-            src: originalFolderPath + "/" + filename, dst: bigFolderPath + "/" + filename, width: bigSize
-        }).then(
-            function (image) {
-                console.log('resize Big image: ' + image.width);
-               
-                easyimg.resize({
-                    src: bigFolderPath + "/" + filename, dst: smallFolderPath + "/" + filename, width: size
-                }).then(
-                    function (image) {
-                        console.log('resize small image: ' + image.width);
-
-                        updateSmallFileQiniu(folder, "images/small/" + folder + "/" + filename, smallFolderPath + "/" + filename, "images/big/" + folder + "/" + filename, bigFolderPath + "/" + filename, res);
-
-                    }
-                );
-            }
-        );
-    } else if(smallFolderPath != null && bigFolderPath == null) {
-        easyimg.resize({
-            src: originalFolderPath + "/" + filename, dst: smallFolderPath + "/" + filename, width: size
-        }).then(
-            function (image) {
-                console.log('resize mini image: ' + image.width);
-                
-                updateSmallFileQiniu(folder, "images/mini/" + folder + "/" + filename, smallFolderPath + "/" + filename, null, null, res);
-
-            }
-        );
-    }
 
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var codeList = [];
 
@@ -313,7 +446,6 @@ var clearCodeList = setInterval(function(){
 
 var blacklist = [];
 var whitelist = [];
-
 
 router.get('/sendCode', function (req, res, next) {
 
@@ -514,7 +646,6 @@ router.get('/checkCode', function (req, res, next) {
         res.send("03");
     }
 });
-
 
 
 
