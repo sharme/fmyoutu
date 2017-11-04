@@ -245,6 +245,19 @@ buybs.config(function($routeProvider, $cssProvider){
             }
         ]
     }).
+    when('/account/services',{
+        templateUrl: 'views/account/services.html',
+        // controller: 'FootstepAddController',
+        css: [
+            {
+                // href: '../css/footstep/add-m.css',
+                breakpoint: 'mobile'
+            }, {
+                // href: '../css/footstep/add.css',
+                breakpoint: 'desktop'
+            }
+        ]
+    }).
     when('/tool/pixel',{
         templateUrl: 'views/ptool/tool.html',
         controller: 'pixelController',
