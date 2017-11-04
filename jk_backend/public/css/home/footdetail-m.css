@@ -36,7 +36,7 @@
   border: none;
 }
 .foot_wrapper .foot_wrapper-main .foot_wrapper_pic_list {
-  height: 85px;
+  height: 125px;
 }
 .foot_wrapper .foot_wrapper-main .foot_wrapper_pic_list .foot_wrapper_pic_list_img {
   width: 75px;
@@ -49,6 +49,11 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
+}
+.foot_wrapper .foot_wrapper-main .foot_wrapper_pic_list .foot_wrapper_pic_list_img div {
+  height: 20px;
+  text-align: center;
+  margin-top: 5px;
 }
 .foot_wrapper .foot_wrapper-main .foot_wrapper-main_profile {
   margin-top: 10px;
