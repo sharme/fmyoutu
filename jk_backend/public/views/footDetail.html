@@ -29,12 +29,21 @@
         <div class="foot_wrapper_pic_list">
             <div class="foot_wrapper_pic_list_img" ng-click="switchPic(foot.fs_pic)">
                 <img class="footstep_pic0" ng-src="{{foot.fs_pic}}">
+                <div ng-if="checkUser">
+                    <button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic, foot.u_id)">下载</button>
+                </div>
             </div>
             <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic2" ng-click="switchPic(foot.fs_pic2)">
                 <img class="footstep_pic2" ng-src="{{foot.fs_pic2}}">
+                <div ng-if="checkUser">
+                    <button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic2, foot.u_id)">下载</button>
+                </div>
             </div>
             <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic3" ng-click="switchPic(foot.fs_pic3)">
                 <img class="footstep_pic3" ng-src="{{foot.fs_pic3}}">
+                <div ng-if="checkUser">
+                    <button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic3, foot.u_id)">下载</button>
+                </div>
             </div>
         </div>
         <div class="foot_wrapper-main_profile">

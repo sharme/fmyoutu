@@ -599,6 +599,22 @@ buybsControllers.controller('FootDetailCtrl', ['$scope', '$routeParams', '$http'
       });
     
   };
+
+  $scope.downloadBtn = function(url,u_id) {
+    if($cookies.get('u_id') == undefined){
+      $window.location.href = '#/login';
+      return;
+    }
+
+    var x=new XMLHttpRequest();
+    x.open("GET", url, true);
+    x.responseType = 'blob';
+    x.onload=function(e){download(x.response, u_id, "image/jpg" ); }
+    x.send();
+
+    // download(url, null, "img/jpg");
+
+  };
   
 
   $scope.stickBtn = function(id, u_id){
@@ -980,10 +996,6 @@ buybsControllers.controller('ProfileController', ['$scope', '$http', '$window','
 
 buybsControllers.controller('pixelController', ['$scope', '$cookies', '$window', '$http','$css', function($scope, $cookies, $window, $http, $css){
 
-  if($cookies.get('u_id') == undefined){
-    $window.location.href = '#/email_login';
-    return;
-  }
   // deprecated
   // $http({method: 'GET', url: ipAddress + '/countries/getCountries'})
   //     .success(function(data){
@@ -1029,6 +1041,12 @@ buybsControllers.controller('pixelController', ['$scope', '$cookies', '$window',
 
   // submit resize pixel and post to public
   $scope.submit = function() {
+
+    if($cookies.get('u_id') == undefined){
+      $window.location.href = '#/email_login';
+      return;
+    }
+
     if($scope.footstep.fs_desc == null){
       alert('描述不能为空');
       return;
