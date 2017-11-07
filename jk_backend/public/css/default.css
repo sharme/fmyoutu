@@ -50,7 +50,6 @@ button {
 #header {
   height: 125px;
   padding: 15px 0% 0px 2%;
-  background-color: #43c17e;
   width: 100%;
 }
 #header .header-site {
@@ -76,7 +75,7 @@ button {
   float: left;
   list-style-type: none;
   font-size: 16px;
-  color: white;
+  color: black;
 }
 #header .header-right {
   float: right;
