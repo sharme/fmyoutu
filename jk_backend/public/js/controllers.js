@@ -138,7 +138,7 @@ function displayPosition(miles, top){
 
   },miles);
 
-  $('.view-container').css('display', 'block');;
+  // $('.view-container').css('display', 'block');
 
 }
 
@@ -158,7 +158,7 @@ function dynamicallyCSS(mobileSize, defaultCSS, mobileCSS, cssObj) {
 /* Get footsteps list */
 buybsControllers.controller('FootstepsListCtrl', ['$scope', '$http', '$cookies', '$window','$css', function ($scope, $http, $cookies, $window, $css) {
 
-  $('.view-container').css('display','none');
+  // $('.view-container').css('display','none');
 
   // $('.explore').css('display','block');
 
@@ -401,6 +401,10 @@ buybsControllers.controller('FootstepsListCtrl', ['$scope', '$http', '$cookies',
           $scope.error = error;
         });
   };
+  
+  $scope.initOver = function () {
+    $('.view-container').css('display', 'block');
+  }
 
 
 }]);
