@@ -56,6 +56,7 @@ function addEvent($http, $window, u_id, at_id, nf_to, tp_id, c_id, reload){
 
 var allowScroll = false;
 function displayPosition(miles, top){
+
   var maxTop = 0;
   var timer = setInterval(function(){
     window.clearInterval(timer);
@@ -136,7 +137,9 @@ function displayPosition(miles, top){
       }
 
   },miles);
-  
+
+  $('.view-container').css('display', 'block');;
+
 }
 
 
@@ -154,6 +157,8 @@ function dynamicallyCSS(mobileSize, defaultCSS, mobileCSS, cssObj) {
 
 /* Get footsteps list */
 buybsControllers.controller('FootstepsListCtrl', ['$scope', '$http', '$cookies', '$window','$css', function ($scope, $http, $cookies, $window, $css) {
+
+  $('.view-container').css('display','none');
 
   // $('.explore').css('display','block');
 
