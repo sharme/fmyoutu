@@ -46,7 +46,7 @@
 
 
 </head>
-<body>
+<body onload="initOver()">
 
 <div id="header" class="header" ng-controller="headerController">
   <a href="#/" class="header-site"><img src="img/youtu.png" style="width: 40px;height: 40px;"></a>
@@ -133,8 +133,22 @@
     }
 
 
-
   });
+
+  var $$ = function(func){
+      if (document.addEventListener) {
+          window.addEventListener("load", func, false);
+      }
+      else if (document.attachEvent) {
+          window.attachEvent("onload", func);
+      }
+  };
+
+  $$(function(){
+      $('.view-container').css('display', 'block');
+  })
+
+
 </script>
 
 
