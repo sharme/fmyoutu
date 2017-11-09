@@ -154,11 +154,16 @@ function dynamicallyCSS(mobileSize, defaultCSS, mobileCSS, cssObj) {
 }
 
 
-
+var initTimer;
 /* Get footsteps list */
 buybsControllers.controller('FootstepsListCtrl', ['$scope', '$http', '$cookies', '$window','$css', function ($scope, $http, $cookies, $window, $css) {
+  
+  initTimer = setInterval(function(){
+    $('.view-container').css('display', 'block');
+  }, 600);
+  
 
-  // $('.view-container').css('display','none');
+  $('.view-container').css('display','none');
 
   // $('.explore').css('display','block');
 
