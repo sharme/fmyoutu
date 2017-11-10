@@ -160,7 +160,7 @@ buybsControllers.controller('FootstepsListCtrl', ['$scope', '$http', '$cookies',
   
   initTimer = setInterval(function(){
     $('.view-container').css('display', 'block');
-  }, 600);
+  }, 500);
   
 
   $('.view-container').css('display','none');
