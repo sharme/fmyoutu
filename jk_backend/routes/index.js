@@ -35,6 +35,13 @@ router.get('/index', function(req, res, next) {
   }
 });
 
+router.get('/redirect', function(req, res, next) {
+
+  res.redirect("http://modeng.ke.qq.com/");
+  res.end();
+
+});
+
 router.get('/logs', function(req, res, next) {
 
   var secret = req.param("secret");
