@@ -1087,12 +1087,12 @@ buybsControllers.controller('pixelController', ['$scope', '$cookies', '$window',
         alert("创建失败, 请稍后再试.");
       } else {
         // alert("恭喜, 创建成功.");
-        window.open($scope.footstep.fs_pic);
-        window.open($scope.footstep.fs_pic2);
-        window.open($scope.footstep.fs_pic3);
-        window.open($scope.footstep.fs_pic4);
-        window.open($scope.footstep.fs_pic5);
-        window.open($scope.footstep.fs_pic6);
+        // window.open($scope.footstep.fs_pic);
+        // window.open($scope.footstep.fs_pic2);
+        // window.open($scope.footstep.fs_pic3);
+        // window.open($scope.footstep.fs_pic4);
+        // window.open($scope.footstep.fs_pic5);
+        // window.open($scope.footstep.fs_pic6);
 
         $window.location.href = '#/profile?u_id=' + $cookies.get('u_id');
       }

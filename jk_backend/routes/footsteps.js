@@ -111,7 +111,7 @@ router.get('/getFootstepsByTag', function(req, res, next) {
             "(select (select u_name from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc where jkc.fs_id=jkf.fs_id limit 1) as u_name," +
             "(select cm_content from jk_comments as jkc where jkc.fs_id = jkf.fs_id limit 1) as cm_content," +
             "fs_smallImg, fs_bigImg, fs_create_time " +
-            " from jk_footsteps as jkf where jkf.fs_status=1 and jkf.fs_des like '%" + req.param('tag') + "%'";
+            " from jk_footsteps as jkf where jkf.fs_status=1 and jkf.fs_des like '%" + req.param('tag') + "%' or jkf.fs_from like '%" + req.param('tag') + "%'";
 
 
     } else {
@@ -227,7 +227,7 @@ router.post('/create', function(req, res, next) {
     
     if(req.body.secret == auth.encrypt(req.body.u_id)) {
 
-        var createSQL = mysql.format("insert into jk_footsteps(fs_pic,fs_des,fs_from,u_id,fs_bigImg,fs_smallImg,fs_create_time,fs_update_time, fs_status, fs_pic2, fs_pic3, fs_pic4, fs_pic5, fs_pic6, fs_pic7, fs_pic8) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", [req.body.fs_pic, req.body.fs_desc, '中国', req.body.u_id, req.body.fs_bigImg, req.body.fs_smallImg, date, date,0, req.body.fs_pic2, req.body.fs_pic3, req.body.fs_pic4, req.body.fs_pic5, req.body.fs_pic6, req.body.fs_pic7, req.body.fs_pic8]);
+        var createSQL = mysql.format("insert into jk_footsteps(fs_pic,fs_des,fs_from,u_id,fs_bigImg,fs_smallImg,fs_create_time,fs_update_time, fs_status, fs_pic2, fs_pic3, fs_pic4, fs_pic5, fs_pic6, fs_pic7, fs_pic8) values(?,?,?,?,?,?,NOW(),?,?,?,?,?,?,?,?,?)", [req.body.fs_pic, req.body.fs_desc, req.body.fs_from, req.body.u_id, req.body.fs_bigImg, req.body.fs_smallImg, date, 0, req.body.fs_pic2, req.body.fs_pic3, req.body.fs_pic4, req.body.fs_pic5, req.body.fs_pic6, req.body.fs_pic7, req.body.fs_pic8]);
 
         console.log(createSQL);
         
