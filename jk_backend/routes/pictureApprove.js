@@ -31,6 +31,8 @@ router.post('/reject', function(req, res, next) {
 router.post('/approve', function(req, res, next) {
     var addSQL = mysql.format("update jk_footsteps set fs_status=1,fs_update_time=? where fs_id=?",[date, req.param('fs_id')]);
 
+    console.log(addSQL);
+    
     connection.query(addSQL, function (err, result) {
         if(err) {
             res.send("Error: " + err);

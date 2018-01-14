@@ -42,6 +42,7 @@
   min-height: 600px;
   z-index: 2;
   position: relative;
+  display: block;
 }
 .footstep-list .footstep_list_profile {
   padding: 0px 5%;
