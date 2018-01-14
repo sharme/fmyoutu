@@ -24,9 +24,11 @@ router.get('/getFootsteps', function(req, res, next) {
     
     var criteriaSQL = "";
     if(u_id) {
-         criteriaSQL = mysql.format("select fs_id,u_id,fs_pic,fs_des,fs_from," +
+         criteriaSQL = mysql.format("select fs_id,u_id,fs_pic, fs_pic2, fs_pic3, fs_pic4, fs_pic5, fs_pic6, fs_pic7, fs_pic8, fs_des,fs_from," +
             "(select count(*) from jk_sticks as jks where jks.fs_id = jkf.fs_id) as sticks," +
-                 "(select u_avatar from jk_users as jku where jku.u_id=jkf.u_id) as u_tag," +
+             "(select count(*) from jk_comments as jkc where jkc.fs_id = jkf.fs_id) as comments," + 
+            "(select u_avatar from jk_users as jku where jku.u_id=jkf.u_id) as u_tag," +
+            "(select u_name from jk_users as jku where jku.u_id=jkf.u_id) as u_tag_name," +
             "(select count(*) from jk_sticks as jks where jks.fs_id = jkf.fs_id and jks.u_id=?) as stick_status," +
             "(select count(*) from jk_likes as jkl where jkl.fs_id = jkf.fs_id) as likes," +
             "(select count(*) from jk_likes as jkl where jkl.fs_id = jkf.fs_id and jkl.u_id=?) as like_status," +
@@ -36,9 +38,11 @@ router.get('/getFootsteps', function(req, res, next) {
             "fs_smallImg, fs_bigImg, fs_create_time " +
             " from jk_footsteps as jkf where jkf.fs_status=1 ",[req.param('u_id'),req.param('u_id')]);
     } else {
-        criteriaSQL = "select fs_id,u_id,fs_pic,fs_des,fs_from," +
+        criteriaSQL = "select fs_id,u_id,fs_pic, fs_pic2, fs_pic3, fs_pic4, fs_pic5, fs_pic6, fs_pic7, fs_pic8, fs_des,fs_from," +
             "(select count(*) from jk_sticks as jks where jks.fs_id = jkf.fs_id) as sticks," +
-                "(select u_avatar from jk_users as jku where jku.u_id=jkf.u_id) as u_tag," +
+            "(select count(*) from jk_comments as jkc where jkc.fs_id = jkf.fs_id) as comments," +
+            "(select u_avatar from jk_users as jku where jku.u_id=jkf.u_id) as u_tag," +
+            "(select u_name from jk_users as jku where jku.u_id=jkf.u_id) as u_tag_name," +
             "(select count(*) from jk_likes as jkl where jkl.fs_id = jkf.fs_id) as likes," +
             "(select (select u_avatar from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc where jkc.fs_id=jkf.fs_id limit 1) as u_avatar," +
             "(select (select u_name from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc where jkc.fs_id=jkf.fs_id limit 1) as u_name," +
@@ -88,19 +92,32 @@ router.get('/getFootstepsByTag', function(req, res, next) {
 
     var criteriaSQL = "";
     if(req.param('tag')) {
-        criteriaSQL = "select fs_id,u_id,fs_pic,fs_des,fs_from," +
+        // criteriaSQL = "select fs_id,u_id,fs_pic, fs_pic2, fs_pic3, fs_pic4, fs_pic5, fs_pic6, fs_pic7, fs_pic8, fs_des,fs_from," +
+        //     "(select count(*) from jk_sticks as jks where jks.fs_id = jkf.fs_id) as sticks," +
+        //     "(select count(*) from jk_comments as jkc where jkc.fs_id = jkf.fs_id) as comments," +
+        //     "(select u_avatar from jk_users as jku where jku.u_id=jkf.u_id) as u_tag," +
+        //     "(select count(*) from jk_likes as jkl where jkl.fs_id = jkf.fs_id) as likes," +
+        //     "(select (select u_avatar from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc where jkc.fs_id=jkf.fs_id limit 1) as u_avatar," +
+        //     "(select (select u_name from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc where jkc.fs_id=jkf.fs_id limit 1) as u_name," +
+        //     "(select cm_content from jk_comments as jkc where jkc.fs_id = jkf.fs_id limit 1) as cm_content," +
+        //     "fs_smallImg, fs_bigImg, fs_create_time " +
+        //     " from jk_footsteps as jkf where jkf.fs_status=1 and jkf.fs_id in (select fs_id from jk_tag_footsteps as jktf where jktf.tg_id = (select tg_id from jk_tags as jkt where jkt.tg_name like '%" + req.param('tag') + "%')) ";
+        criteriaSQL = "select fs_id,u_id,fs_pic, fs_pic2, fs_pic3, fs_pic4, fs_pic5, fs_pic6, fs_pic7, fs_pic8, fs_des,fs_from," +
             "(select count(*) from jk_sticks as jks where jks.fs_id = jkf.fs_id) as sticks," +
+            "(select count(*) from jk_comments as jkc where jkc.fs_id = jkf.fs_id) as comments," +
             "(select u_avatar from jk_users as jku where jku.u_id=jkf.u_id) as u_tag," +
             "(select count(*) from jk_likes as jkl where jkl.fs_id = jkf.fs_id) as likes," +
             "(select (select u_avatar from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc where jkc.fs_id=jkf.fs_id limit 1) as u_avatar," +
             "(select (select u_name from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc where jkc.fs_id=jkf.fs_id limit 1) as u_name," +
             "(select cm_content from jk_comments as jkc where jkc.fs_id = jkf.fs_id limit 1) as cm_content," +
             "fs_smallImg, fs_bigImg, fs_create_time " +
-            " from jk_footsteps as jkf where jkf.fs_status=1 and jkf.fs_id in (select fs_id from jk_tag_footsteps as jktf where jktf.tg_id = (select tg_id from jk_tags as jkt where jkt.tg_name like '%" + req.param('tag') + "%')) ";
+            " from jk_footsteps as jkf where jkf.fs_status=1 and jkf.fs_des like '%" + req.param('tag') + "%'";
+
 
     } else {
-        criteriaSQL = "select fs_id,u_id,fs_pic,fs_des,fs_from," +
+        criteriaSQL = "select fs_id,u_id,fs_pic, fs_pic2, fs_pic3, fs_pic4, fs_pic5, fs_pic6, fs_pic7, fs_pic8, fs_des,fs_from," +
             "(select count(*) from jk_sticks as jks where jks.fs_id = jkf.fs_id) as sticks," +
+            "(select count(*) from jk_comments as jkc where jkc.fs_id = jkf.fs_id) as comments," +
             "(select u_avatar from jk_users as jku where jku.u_id=jkf.u_id) as u_tag," +
             "(select count(*) from jk_likes as jkl where jkl.fs_id = jkf.fs_id) as likes," +
             "(select (select u_avatar from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc where jkc.fs_id=jkf.fs_id limit 1) as u_avatar," +
@@ -110,7 +127,16 @@ router.get('/getFootstepsByTag', function(req, res, next) {
             " from jk_footsteps as jkf where jkf.fs_status=1 ";
     }
 
+    // criteriaSQL += " order by fs_create_time desc";
+    // if(req.param('index_start') && req.param('count')) {
+    //     criteriaSQL += " limit " + req.param('index_start') + "," + req.param('count');
+    // }
+
+    if(req.param('fs_from')){
+        criteriaSQL += " and jkf.fs_from='" + req.param('fs_from') + "'";
+    }
     criteriaSQL += " order by fs_create_time desc";
+
     if(req.param('index_start') && req.param('count')) {
         criteriaSQL += " limit " + req.param('index_start') + "," + req.param('count');
     }
@@ -201,8 +227,10 @@ router.post('/create', function(req, res, next) {
     
     if(req.body.secret == auth.encrypt(req.body.u_id)) {
 
-        var createSQL = mysql.format("insert into jk_footsteps(fs_pic,fs_des,fs_from,u_id,fs_bigImg,fs_smallImg,fs_create_time,fs_update_time, fs_status, fs_pic2, fs_pic3) values(?,?,?,?,?,?,?,?,?,?,?)", [req.body.fs_pic, req.body.fs_desc, '中国', req.body.u_id, req.body.fs_bigImg, req.body.fs_smallImg, date, date,0, req.body.fs_pic2, req.body.fs_pic3]);
+        var createSQL = mysql.format("insert into jk_footsteps(fs_pic,fs_des,fs_from,u_id,fs_bigImg,fs_smallImg,fs_create_time,fs_update_time, fs_status, fs_pic2, fs_pic3, fs_pic4, fs_pic5, fs_pic6, fs_pic7, fs_pic8) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", [req.body.fs_pic, req.body.fs_desc, '中国', req.body.u_id, req.body.fs_bigImg, req.body.fs_smallImg, date, date,0, req.body.fs_pic2, req.body.fs_pic3, req.body.fs_pic4, req.body.fs_pic5, req.body.fs_pic6, req.body.fs_pic7, req.body.fs_pic8]);
 
+        console.log(createSQL);
+        
         connection.query(createSQL, function (err, result) {
             if (err) {
                 res.send(err);
@@ -234,7 +262,7 @@ router.get('/getFootstepsDetail', function (req, res, next) {
        "(select count(*) from jk_likes as jkl where jkl.fs_id = jkf.fs_id) as likes," +
        "(select u_name from jk_users as jku where jku.u_id = jkf.u_id) as u_name," +
            "(select u_avatar from jk_users as jku where jku.u_id = jkf.u_id) as u_avatar," +
-       "(select u_slogan from jk_users as jku where jku.u_id = jkf.u_id) as u_slogan, fs_smallImg, fs_bigImg, fs_pic2, fs_pic3 from jk_footsteps as jkf where jkf.fs_id = ?", [req.param('fs_id')]);
+       "(select u_slogan from jk_users as jku where jku.u_id = jkf.u_id) as u_slogan, fs_smallImg, fs_bigImg, fs_pic2, fs_pic3, fs_pic4, fs_pic5, fs_pic6, fs_pic7, fs_pic8 from jk_footsteps as jkf where jkf.fs_id = ?", [req.param('fs_id')]);
 
     connection.query(criteriaSQL, function (err, result) {
         if(err) {

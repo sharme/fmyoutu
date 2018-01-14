@@ -37,6 +37,7 @@ router.get('/index', function(req, res, next) {
 
 router.get('/redirect', function(req, res, next) {
 
+  console.log("redirect log");
   res.redirect("http://modeng.ke.qq.com/");
   res.end();
 

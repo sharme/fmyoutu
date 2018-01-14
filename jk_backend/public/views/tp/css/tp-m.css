@@ -1,0 +1,124 @@
+.search_bar {
+  border: solid 1px #AEAEAE;
+  width: 200px;
+  height: 30px;
+  text-align: center;
+  border-radius: 5px;
+  margin: 0 0% 10px 0%;
+}
+.trip_list {
+  /* border: solid 1px #AEAEAE; */
+  margin: 5px 2% 0px 2%;
+  min-height: 800px;
+  display: block;
+}
+.header {
+  /* width: 100%; */
+  height: 40px;
+  /* border: solid 1px gray; */
+  /* float: right; */
+}
+.add_trip {
+  /* border: solid 1px gray; */
+  font-size: 24px;
+  color: #AEAEAE;
+  width: 60px;
+  float: right;
+  text-align: center;
+}
+.trip {
+  /* border: solid 1px #AEAEAE;  */
+  min-height: 260px;
+  margin-top: 80px;
+  cursor: pointer;
+}
+.trip_image {
+  border: solid 1px #AEAEAE;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  float: left;
+}
+.trip_info {
+  float: left;
+  margin: 0px 5px 0px 5px;
+  font-size: 12px;
+  color: #AEAEAE;
+}
+.trip_follow_btn {
+  height: 20px;
+  width: 40px;
+  margin: 5px;
+  float: right;
+  font-size: 11px;
+  padding: 0px;
+  line-height: 1.7em;
+  opacity: 0.6;
+  background-color: red;
+  color: white;
+}
+.trip_header {
+  float: left;
+  width: 100%;
+}
+.trip_main {
+  /* border: solid 1px #AEAEAE; */
+}
+.trip_main_title {
+  font-size: 14px;
+  /* font-weight: bold; */
+  margin: 40px 0px 2px 0px;
+}
+.trip_main_title text {
+  color: #AEAEAE;
+}
+.trip_main_desc {
+  font-size: 12px;
+  max-height: 100px;
+  margin: 5px 0px 5px 0px;
+}
+.trip_main_images {
+  /* border-top: solid 1px #AEAEAE; */
+  margin-top: 5px;
+  width: 100%;
+  height: 150px;
+}
+.trip_main_images_image {
+  width: 23%;
+  height: 150px;
+  border: solid 1px #AEAEAE;
+  margin: 0px 2% 0px 0px;
+  float: left;
+}
+.the_end {
+  height: 200px;
+  text-align: center;
+  border-top: solid 1px #AEAEAE;
+  margin-top: 50px;
+  padding-top: 10px;
+  color: #AEAEAE;
+}
+.t_like {
+  float: left;
+  margin-top: 10px;
+  margin-right: 30px;
+  color: #AEAEAE;
+  font-size: 12px;
+}
+.t_like img {
+  width: 15px;
+  height: 15px;
+  opacity: 0.6;
+}
+.t_comment {
+  float: left;
+  margin-top: 10px;
+  margin-right: 30px;
+  color: #AEAEAE;
+  font-size: 12px;
+}
+.t_comment img {
+  opacity: 0.6;
+  width: 15px;
+  height: 15px;
+}

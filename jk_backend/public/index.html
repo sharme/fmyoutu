@@ -36,6 +36,7 @@
   <script src="../js/controllers/account-controller.js"></script>
   <script src="../js/controllers/community-controller.js"></script>
   <script src="../js/controllers/match-controller.js"></script>
+  <script src="../views/tp/js/tp.js"></script>
   <script src="../js/filters/filters.js"></script>
   <script src="../js/ckeditor/ckeditor.js"></script>
 
@@ -49,10 +50,17 @@
 <body onload="initOver()">
 
 <div id="header" class="header" ng-controller="headerController">
-  <a href="#/" class="header-site"><img src="img/youtu.png" style="width: 40px;height: 40px;"></a>
-  <a ng-click="homepageBtn()" href="javascript: void(0);" class="header-homepage"><div class="header-div-style">裁缝们的图片</div></a>
-  <a href="#/community/index" class="header-homepage" ng-click="msgShow()"><div class="header-div-style">裁缝们的圈子</div></a>
-  <!--<a href="#/adv/index" class="header-homepage"><div class="header-div-style">你的旅行</div></a>-->
+  <div class="header-site">有图旅行</div>
+  <div style="float: left; color: #AEAEAE; margin-left: 15px;">
+      一辈子的旅行
+  </div>
+  <div style="margin-right: 15%;">
+  <!--<a ng-click="homepageBtn()" href="javascript: void(0);" class="header-homepage"><div class="header-div-style">主页</div></a>-->
+  <a href="#/" href="javascript: void(0);" class="header-homepage"><div class="header-div-style">首页</div></a>
+  <a href="#/community/index" class="header-homepage" ng-click="msgShow()"><div class="header-div-style">留言</div></a>
+  </div>
+
+    <!--<a href="#/adv/index" class="header-homepage"><div class="header-div-style">你的旅行</div></a>-->
     <!--<a href="#/tool/pixel" class="header-homepage"><div class="header-div-style">图裁剪</div></a>-->
 
     <!--<div class="qr_fmyoutu">-->
@@ -89,11 +97,11 @@
   </div>
 
 </div>
-<a href="#/tool/pixel">
-<div class="share">
-    我也要裁剪图片
-</div>
-</a>
+<!--<a href="#/tool/pixel">-->
+<!--<div class="share">-->
+    <!--我也要裁剪图片-->
+<!--</div>-->
+<!--</a>-->
 <div class="view-container">
   <div ng-view class="view-frame"></div>
 </div>

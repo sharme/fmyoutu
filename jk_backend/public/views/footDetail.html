@@ -12,8 +12,8 @@
                 <button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="delBtn(foot.fs_id, foot.u_id)">删除</button>
             </div>
             <div ng-if="!checkUser">
-                <button class="stick_footstep" style={{foot.sticks==1?"background-color:#43c17e;":""}} ng-click="stickBtn(foot.fs_id, foot.u_id)">想去</button>&nbsp;&nbsp;<span class="btnStickNum{{foot.fs_id}}">{{foot.sticks}}</span>
-                <button class="like_footstep" style={{foot.likes==1?"background-color:#43c17e;":""}} ng-click="likeBtn(foot.fs_id, foot.u_id)">去过</button>&nbsp;&nbsp;<span class="btnLikeNum{{foot.fs_id}}">{{foot.likes}}</span>
+                <!--<button class="stick_footstep" style={{foot.sticks==1?"background-color:#43c17e;":""}} ng-click="stickBtn(foot.fs_id, foot.u_id)">想去</button>&nbsp;&nbsp;<span class="btnStickNum{{foot.fs_id}}">{{foot.sticks}}</span>-->
+                <button class="like_footstep" style={{foot.likes==1?"background-color:#43c17e;":""}} ng-click="likeBtn(foot.fs_id, foot.u_id)">👍</button>&nbsp;&nbsp;<span class="btnLikeNum{{foot.fs_id}}">{{foot.likes}}</span>
             </div>
             <hr>
             <p>{{foot.fs_des}}</p>
@@ -24,7 +24,7 @@
             <!--<div class="prev_pic footstep_div-pic_prev_pic" style="float: right; margin-left: 10px; cursor: pointer;" ng-click="prevPic(foot.fs_id)">上一张图</div>-->
             <!--<div class="next_pic footstep_div-pic_next_pic" style="cursor: pointer;" ng-click="nextPic(foot.fs_id)">下一张图</div>-->
             <!--<zoom ng-if="zoom == true" window-size="{{windowSize}}" mark-height="100" mark-width="100" ng-src="{{trustSrc(foot.fs_bigImg)}}" zoom-lvl="{{4}}"></zoom>-->
-            <img ng-src="{{foot.fs_bigImg}}" class="picture-present" style="max-width: 100%; height: 100%; cursor: zoom-in;">
+            <img ng-src="{{foot.fs_bigImg}}" class="picture-present" style="max-width: 100%; cursor: zoom-in;">
         </div>
         <div class="foot_wrapper_pic_list">
             <div class="foot_wrapper_pic_list_img" ng-click="switchPic(foot.fs_pic)">
@@ -43,6 +43,30 @@
                 <img class="footstep_pic3" ng-src="{{foot.fs_pic3}}">
                 <div ng-if="checkUser">
                     <button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic3, foot.u_id)">下载</button>
+                </div>
+            </div>
+            <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic4" ng-click="switchPic(foot.fs_pic4)">
+                <img class="footstep_pic3" ng-src="{{foot.fs_pic4}}">
+                <div ng-if="checkUser">
+                    <button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic4, foot.u_id)">下载</button>
+                </div>
+            </div>
+            <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic5" ng-click="switchPic(foot.fs_pic5)">
+                <img class="footstep_pic3" ng-src="{{foot.fs_pic5}}">
+                <div ng-if="checkUser">
+                    <button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic5, foot.u_id)">下载</button>
+                </div>
+            </div>
+            <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic6" ng-click="switchPic(foot.fs_pic6)">
+                <img class="footstep_pic3" ng-src="{{foot.fs_pic6}}">
+                <div ng-if="checkUser">
+                    <button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic6, foot.u_id)">下载</button>
+                </div>
+            </div>
+            <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic7" ng-click="switchPic(foot.fs_pic7)">
+                <img class="footstep_pic3" ng-src="{{foot.fs_pic7}}">
+                <div ng-if="checkUser">
+                    <button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic7, foot.u_id)">下载</button>
                 </div>
             </div>
         </div>

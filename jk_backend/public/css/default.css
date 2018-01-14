@@ -47,8 +47,17 @@ button {
   background: url(../img/msg.png);
   display: none;
 }
+.trip_list {
+  display: none;
+}
+.footstep-list {
+  display: none;
+}
+.footstep-list-div {
+  display: none;
+}
 #header {
-  height: 125px;
+  height: 100px;
   padding: 15px 0% 0px 2%;
   width: 100%;
 }
@@ -64,11 +73,11 @@ button {
   margin-left: 72%;
 }
 #header .header-div-style {
-  width: 110%;
-  text-align: center;
+  width: 105px;
+  text-align: right;
   height: 45px;
   border-radius: 20%;
-  line-height: 2;
+  color: #AEAEAE;
 }
 #header .header-homepage {
   padding: 20px 0px 0px 10px;

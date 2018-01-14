@@ -100,7 +100,7 @@ account.controller('EmailLoginCtrl', ['$scope', '$cookies', '$window','$http','$
                         $("#login-popup").css("display", "none");
                         $(".login-cover").css("display", "none");
                         $("body").css("overflow", "auto");
-                        $window.location.href = "#/foot";
+                        $window.location.href = "#";
                         $window.location.reload();
                     } else {
                         $(".validation_msg").html("用户名或密码不正确, 请正确输入.");
@@ -242,7 +242,7 @@ account.controller('LoginController', ['$scope', '$http', '$window', '$cookies',
                 $("#login-popup").css("display", "none");
                 $(".login-cover").css("display", "none");
                 $("body").css("overflow","auto");
-                $window.location.href="#/foot";
+                $window.location.href="#";
                 $window.location.reload();
             }else {
                 $(".login-popup-form-invalid").css("display", "block");

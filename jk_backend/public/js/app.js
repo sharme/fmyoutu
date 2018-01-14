@@ -48,14 +48,14 @@ buybs.config(function($routeProvider, $cssProvider){
         //         breakpoint: 'desktop'
         //     }
         // ]
-        templateUrl: 'views/adv/index.html',
-        // controller: 'EmailRegistrationCtrl',
+        templateUrl: 'views/tp/tp.html',
+        controller: 'TripCtrl',
         css: [
             {
-                href: '../views/adv/css/style.css',
+                href: '../views/tp/css/tp-m.css',
                 breakpoint: 'mobile'
             }, {
-                href: '../views/adv/css/style.css',
+                href: '../views/tp/css/tp.css',
                 breakpoint: 'desktop'
             }
         ]

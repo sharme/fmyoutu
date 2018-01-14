@@ -45,6 +45,7 @@
   z-index: 2;
   position: relative;
   margin: 10px 2%;
+  display: block;
 }
 .footstep-list .profile_down-create {
   width: 100px;
@@ -78,6 +79,7 @@
   position: absolute;
   visibility: hidden;
   background: white;
+  display: block;
 }
 .footstep-list .footstep-list-div-pic {
   width: 65%;

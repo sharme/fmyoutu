@@ -586,7 +586,7 @@ buybsControllers.controller('FootDetailCtrl', ['$scope', '$routeParams', '$http'
   
   $scope.delBtn = function(id,u_id) {
     if($cookies.get('u_id') == undefined){
-      $window.location.href = '#/login';
+      $window.location.href = '#';
       return;
     }
     
@@ -723,7 +723,7 @@ buybsControllers.controller('FootDetailCtrl', ['$scope', '$routeParams', '$http'
 
 
   $scope.backHome = function () {
-    window.location.href = '#/foot'
+    window.location.href = '#'
   };
 
   $scope.loginCheck = function(){
@@ -1045,6 +1045,11 @@ buybsControllers.controller('pixelController', ['$scope', '$cookies', '$window',
     fs_status : '',
     fs_pic2 : '',
     fs_pic3 : '',
+    fs_pic4 : '',
+    fs_pic5 : '',
+    fs_pic6 : '',
+    fs_pic7 : '',
+    fs_pic8 : '',
     widthPixel : '',
     heightPixel : '',
     rotateDegree : '',
@@ -1085,6 +1090,10 @@ buybsControllers.controller('pixelController', ['$scope', '$cookies', '$window',
         window.open($scope.footstep.fs_pic);
         window.open($scope.footstep.fs_pic2);
         window.open($scope.footstep.fs_pic3);
+        window.open($scope.footstep.fs_pic4);
+        window.open($scope.footstep.fs_pic5);
+        window.open($scope.footstep.fs_pic6);
+
         $window.location.href = '#/profile?u_id=' + $cookies.get('u_id');
       }
     }, function(error){
@@ -1133,6 +1142,11 @@ buybsControllers.controller('pixelController', ['$scope', '$cookies', '$window',
         if(num == 0) {$scope.footstep.fs_pic = res.customImg; $scope.footstep.fs_smallImg = res.customImg; $scope.footstep.fs_bigImg = res.customImg;}
         if(num == 2) $scope.footstep.fs_pic2 = res.customImg;
         if(num == 3) $scope.footstep.fs_pic3 = res.customImg;
+        if(num == 4) $scope.footstep.fs_pic4 = res.customImg;
+        if(num == 5) $scope.footstep.fs_pic5 = res.customImg;
+        if(num == 6) $scope.footstep.fs_pic6 = res.customImg;
+        if(num == 7) $scope.footstep.fs_pic7 = res.customImg;
+        if(num == 8) $scope.footstep.fs_pic8 = res.customImg;
 
         $(file).css("display", "none");
         $('.footstep_pic_btn' + num).css("display", 'none');
@@ -1451,7 +1465,7 @@ buybsControllers.controller('headerController', ['$scope', '$cookies', '$window'
     $cookies.remove('u_id');
     $cookies.remove('u_avatar');
     $cookies.remove('secret');
-    $window.location.href = '#/foot';
+    $window.location.href = '#';
     $window.location.reload();
   };
 
@@ -1499,10 +1513,10 @@ buybsControllers.controller('headerController', ['$scope', '$cookies', '$window'
 
 buybsControllers.controller('MessageController', ['$scope', '$cookies', '$window', '$http', '$css', function($scope, $cookies, $window, $http, $css){
 
-  if($cookies.get('u_id') == undefined){
-    $window.location.href = '#/login';
-    return;
-  }
+  // if($cookies.get('u_id') == undefined){
+  //   $window.location.href = '#/login';
+  //   return;
+  // }
 
   $scope.message = {
     u_id: $cookies.get('u_id'),
