@@ -1,5 +1,5 @@
 body {
-  background-color: black;
+  background-color: white;
 }
 .profile_top-edit {
   height: 120px;
@@ -26,9 +26,13 @@ body {
   text-align: center;
 }
 .profile_top {
-  width: 460px;
-  margin: 200px auto;
-  background-color: white;
+  color: #AEAEAE;
+  margin: 0px 15%;
+}
+.profile_top .profile_title {
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  border-bottom: solid 1px #AEAEAE;
 }
 .profile_top #profile_top-header {
   width: 100%;
@@ -100,12 +104,12 @@ body {
   margin: 35px 0px 0px 7%;
 }
 .profile_top-edit-submit {
-  margin-right: 20px;
-  padding: 10px;
-  margin-top: 10px;
-  width: 100%;
-  background-color: darkgray;
-  border: none;
+  width: 50px;
+  background-color: #AEAEAE;
+  color: white;
+  border-radius: 5px;
+  font-size: 12px;
+  float: right;
 }
 .profile_avatar {
   float: right;
@@ -129,13 +133,16 @@ body {
   vertical-align: top;
   margin-bottom: 10px;
 }
+.profile_username {
+  height: 100px;
+}
 .uploadBtn {
   display: inline-block;
   vertical-align: top;
   background: #47a447;
-  font-size: 16px;
-  padding: 3px 10px;
-  height: 30px;
+  font-size: 12px;
+  padding: 0px 5px;
+  height: 24px;
   line-height: 22px;
   color: #fff;
   border-radius: 4px;

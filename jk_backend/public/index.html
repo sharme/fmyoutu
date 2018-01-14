@@ -6,8 +6,9 @@
   <link rel="icon" type="image/gif/png" href="img/youtu.png">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" type="text/css" href="css/default.css" ng-if="true">
-  <!--<link rel="stylesheet" type="text/css" href="css/default-m.css" ng-if="sizeM">-->
+  <link rel="stylesheet" type="text/css" href="css/default.css">
+  <!--<link rel="stylesheet" type="text/css" href="css/default-m.css" >-->
+
   <link rel="stylesheet" href="css/zoom.css">
   <link rel="stylesheet" href="css/jquery-ui.min.css">
     <!-- Link Swiper's CSS -->
@@ -51,15 +52,9 @@
 
 <div id="header" class="header" ng-controller="headerController">
   <div class="header-site">有图旅行</div>
-  <div style="float: left; color: #AEAEAE; margin-left: 15px;">
+  <div class="header_slogo">
       去发现, 去探索 一辈子的旅行
   </div>
-  <div style="margin-right: 15%;">
-  <!--<a ng-click="homepageBtn()" href="javascript: void(0);" class="header-homepage"><div class="header-div-style">主页</div></a>-->
-  <a href="#/" href="javascript: void(0);" class="header-homepage"><div class="header-div-style">首页</div></a>
-  <a href="#/community/index" class="header-homepage" ng-click="msgShow()"><div class="header-div-style">留言</div></a>
-  </div>
-
     <!--<a href="#/adv/index" class="header-homepage"><div class="header-div-style">你的旅行</div></a>-->
     <!--<a href="#/tool/pixel" class="header-homepage"><div class="header-div-style">图裁剪</div></a>-->
 
@@ -70,7 +65,7 @@
 
     <div class="header-right" ng-controller="LoginController">
     <div class="header-right-logout">
-    <span id="login_username"></span><span style="line-height: 2;">| <a ng-click="logout()" href="javascript: void(0);">登出</a></span>
+    <span id="login_username"></span><span style="line-height: 2;"> <a ng-click="logout()" href="javascript: void(0);">登出</a></span>
     </div>
     <!--<div class="header-right-login" style="margin-top: 60px;">-->
     <!--<span id="header-right-login-span">-->
@@ -81,6 +76,11 @@
   </div>
 
 
+    <div class="nav_pages">
+        <!--<a ng-click="homepageBtn()" href="javascript: void(0);" class="header-homepage"><div class="header-div-style">主页</div></a>-->
+        <a href="#/" href="javascript: void(0);" class="header-homepage"><div class="header-div-style">首页</div></a>
+        <a href="#/community/index" class="header-homepage" ng-click="msgShow()"><div class="header-div-style">留言</div></a>
+    </div>
 
   <div class="notification">
     <div class="notification-profile-edit"><a href="#/profile/edit">修改个人信息</a></div>
@@ -106,7 +106,9 @@
   <div ng-view class="view-frame"></div>
 </div>
 <div id="footer">
-   <div><a href="#/message">反馈</a><div class="about"><a href="#/about">关于有图</a></div></div>
+   <div><a href="#/message">反馈</a>
+       <!--<div class="about"><a href="#/about">关于有图</a></div>-->
+   </div>
     <div style="font-size: 12px;
     text-align: center;">有图网&nbsp;|&nbsp; 沪ICP备16054913号-1</div>
 </div>
@@ -120,7 +122,7 @@
                 $('.notification').css('display','none');
             } else {
                 $('.notification').css('width', '50%');
-                $('.notification').css('margin', '35px 0px 0px 45%');
+                $('.notification').css('margin', '60px 0px 0px 45%');
                 $('.notification').css('display','block');
             }
         });

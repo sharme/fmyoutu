@@ -17,7 +17,8 @@
   display: none;
 }
 a {
-  color: black;
+  color: #AEAEAE;
+  font-size: 12px;
   text-decoration: none;
   cursor: pointer;
 }
@@ -61,6 +62,11 @@ button {
   padding: 15px 0% 0px 2%;
   width: 100%;
 }
+#header .header_slogo {
+  float: left;
+  color: #AEAEAE;
+  margin-left: 15px;
+}
 #header .header-site {
   color: gray;
   float: left;
@@ -73,8 +79,7 @@ button {
   margin-left: 72%;
 }
 #header .header-div-style {
-  width: 105px;
-  text-align: right;
+  width: 100px;
   height: 45px;
   border-radius: 20%;
   color: #AEAEAE;
@@ -88,7 +93,7 @@ button {
 }
 #header .header-right {
   float: right;
-  padding: 5px 30px 0px 0px;
+  padding: 5px 30px 10px 0px;
 }
 #header .header-right .header-right-logout {
   display: none;
@@ -224,4 +229,8 @@ button {
 }
 .recommend {
   display: none;
+}
+.nav_pages {
+  float: left;
+  width: 100%;
 }

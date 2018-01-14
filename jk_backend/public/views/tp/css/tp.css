@@ -1,10 +1,13 @@
 .search_bar {
   border: solid 1px #AEAEAE;
-  width: 200px;
+  width: 280px;
   height: 30px;
   text-align: center;
   border-radius: 5px;
-  margin: 0 0% 10px 0%;
+  margin: 20px 0% 0px 0%;
+}
+.header-homepage {
+  width: 100px;
 }
 .trip_list {
   /* border: solid 1px #AEAEAE; */

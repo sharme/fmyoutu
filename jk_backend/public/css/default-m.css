@@ -1,5 +1,6 @@
 a {
-  color: black;
+  color: white;
+  font-size: 12px;
   text-decoration: none;
   cursor: pointer;
 }
@@ -32,6 +33,9 @@ button {
 .trip_list {
   display: none;
 }
+.community {
+  display: none;
+}
 .footstep-list {
   display: none;
 }
@@ -41,16 +45,19 @@ button {
   background-color: #43c17e;
   width: 100%;
 }
+#header .header_slogo {
+  float: left;
+  color: white;
+  margin-left: 15px;
+}
 #header .header-site {
   color: white;
   float: left;
   font-size: 24px;
 }
 #header .header-div-style {
-  width: 110%;
   text-align: center;
   height: 45px;
-  background-color: darkorange;
   border-radius: 20%;
   line-height: 2;
 }
@@ -63,7 +70,7 @@ button {
 }
 #header .header-right {
   float: right;
-  padding: 5px 5px 0px 0px;
+  padding: 20px 5px 0px 0px;
 }
 #header .header-right .header-right-logout {
   display: none;
@@ -131,7 +138,7 @@ button {
   width: 55%;
   margin: 35px 0px 0px 40%;
   border: solid 1px #eee;
-  height: 350px;
+  height: 322px;
   display: none;
   z-index: 20;
   font-size: 12px;
