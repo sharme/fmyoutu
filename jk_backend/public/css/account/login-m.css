@@ -79,11 +79,16 @@
 #login-content .login-content-wrapper .login-content-wrapper-main .login-content-wrapper-main-form .go_back,
 #login-content .login-content-wrapper .login-content-wrapper-main .login-content-wrapper-main-form .register {
   text-align: center;
-  background-color: #8ac249;
   width: 80px;
   margin-right: 10px;
   margin-bottom: 10px;
   cursor: pointer;
+}
+#login-content .login-content-wrapper .login-content-wrapper-main .login-content-wrapper-main-form .forget_pwd a,
+#login-content .login-content-wrapper .login-content-wrapper-main .login-content-wrapper-main-form .email_login a,
+#login-content .login-content-wrapper .login-content-wrapper-main .login-content-wrapper-main-form .go_back a,
+#login-content .login-content-wrapper .login-content-wrapper-main .login-content-wrapper-main-form .register a {
+  color: #AEAEAE;
 }
 #login-content .login-content-wrapper .login-content-wrapper-main .login-content-wrapper-main-form p {
   margin-bottom: 0 !important;
