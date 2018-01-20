@@ -24,49 +24,49 @@
             <!--<div class="prev_pic footstep_div-pic_prev_pic" style="float: right; margin-left: 10px; cursor: pointer;" ng-click="prevPic(foot.fs_id)">上一张图</div>-->
             <!--<div class="next_pic footstep_div-pic_next_pic" style="cursor: pointer;" ng-click="nextPic(foot.fs_id)">下一张图</div>-->
             <!--<zoom ng-if="zoom == true" window-size="{{windowSize}}" mark-height="100" mark-width="100" ng-src="{{trustSrc(foot.fs_bigImg)}}" zoom-lvl="{{4}}"></zoom>-->
-            <img ng-src="{{foot.fs_bigImg}}" class="picture-present" style="max-width: 100%; cursor: zoom-in;">
+            <img ng-src="{{foot.fs_bigImg}}" ng-click="switchPic(foot, index_number)" class="picture-present" style="max-width: 100%; cursor: zoom-in; max-height: 600px; cursor: e-resize;">
         </div>
         <div class="foot_wrapper_pic_list">
-            <div class="foot_wrapper_pic_list_img" ng-click="switchPic(foot.fs_pic)">
+            <div class="foot_wrapper_pic_list_img" ng-click="switchPic(foot.fs_pic, 1, true)">
                 <img class="footstep_pic0" ng-src="{{foot.fs_pic}}">
                 <div ng-if="checkUser">
-                    <button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic, foot.u_id)">下载</button>
+                    <!--<button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic, foot.u_id)">下载</button>-->
                 </div>
             </div>
-            <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic2" ng-click="switchPic(foot.fs_pic2)">
+            <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic2" ng-click="switchPic(foot.fs_pic2, 2)">
                 <img class="footstep_pic2" ng-src="{{foot.fs_pic2}}">
                 <div ng-if="checkUser">
-                    <button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic2, foot.u_id)">下载</button>
+                    <!--<button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic2, foot.u_id)">下载</button>-->
                 </div>
             </div>
-            <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic3" ng-click="switchPic(foot.fs_pic3)">
+            <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic3" ng-click="switchPic(foot.fs_pic3, 3)">
                 <img class="footstep_pic3" ng-src="{{foot.fs_pic3}}">
                 <div ng-if="checkUser">
-                    <button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic3, foot.u_id)">下载</button>
+                    <!--<button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic3, foot.u_id)">下载</button>-->
                 </div>
             </div>
-            <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic4" ng-click="switchPic(foot.fs_pic4)">
+            <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic4" ng-click="switchPic(foot.fs_pic4, 4)">
                 <img class="footstep_pic3" ng-src="{{foot.fs_pic4}}">
                 <div ng-if="checkUser">
-                    <button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic4, foot.u_id)">下载</button>
+                    <!--<button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic4, foot.u_id)">下载</button>-->
                 </div>
             </div>
-            <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic5" ng-click="switchPic(foot.fs_pic5)">
+            <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic5" ng-click="switchPic(foot.fs_pic5, 5)">
                 <img class="footstep_pic3" ng-src="{{foot.fs_pic5}}">
                 <div ng-if="checkUser">
-                    <button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic5, foot.u_id)">下载</button>
+                    <!--<button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic5, foot.u_id)">下载</button>-->
                 </div>
             </div>
-            <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic6" ng-click="switchPic(foot.fs_pic6)">
+            <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic6" ng-click="switchPic(foot.fs_pic6, 6)">
                 <img class="footstep_pic3" ng-src="{{foot.fs_pic6}}">
                 <div ng-if="checkUser">
-                    <button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic6, foot.u_id)">下载</button>
+                    <!--<button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic6, foot.u_id)">下载</button>-->
                 </div>
             </div>
-            <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic7" ng-click="switchPic(foot.fs_pic7)">
+            <div class="foot_wrapper_pic_list_img" ng-if="foot.fs_pic7" ng-click="switchPic(foot.fs_pic7, 7)">
                 <img class="footstep_pic3" ng-src="{{foot.fs_pic7}}">
                 <div ng-if="checkUser">
-                    <button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic7, foot.u_id)">下载</button>
+                    <!--<button class="stick_footstep" style={{result.stick_status==1?"background-color:darkgrey;":""}} ng-click="downloadBtn(foot.fs_pic7, foot.u_id)">下载</button>-->
                 </div>
             </div>
         </div>

@@ -15,7 +15,7 @@
         <div class="community_topic_main" ng-repeat="topic in topics track by $index">
             <div class="community_topic_main_title">
                     <span>
-                        <img class="community_topic_main_title_img" ng-src="{{topic.u_avatar}}">
+                        <img class="community_topic_main_title_img" ng-src="{{topic.u_avatar?topic.u_avatar:'../../img/default_icon.png'}}">
                     </span>
                     &nbsp;&nbsp;{{topic.u_name}} &nbsp;&nbsp;关于&nbsp;&nbsp;
                     <span>{{topic.tp_about}}</span>
@@ -40,7 +40,7 @@
         </div>
         <div class="community_topic_end" ng-if="topics">
 
-            <img src="img/crying_face.png" style="width: 60px">
+            <img src="img/crying_face.png" style="width: 30px">
 
             图图侠！快去发布吧.
         </div>

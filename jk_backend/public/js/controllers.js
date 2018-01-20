@@ -804,10 +804,90 @@ buybsControllers.controller('FootDetailCtrl', ['$scope', '$routeParams', '$http'
     });
   };
 
+  $scope.index_number = 1;
+
+  $scope.switchPic = function(pic, index_number, judge) {
+
+    console.log(pic);
+
+    if(pic && judge) {
+      $('.picture-present').attr('src',pic);
+      $scope.index_number = index_number;
+
+    }
+    else {
+      console.log("index_number: " + index_number);
+
+      var maxIndex = false;
+
+      if (pic.fs_pic2) {
+        maxIndex = 2;
+      }
+
+      if (pic.fs_pic3) {
+        maxIndex = 3;
+      }
+
+      if (pic.fs_pic4) {
+        maxIndex = 4;
+      }
+
+      if (pic.fs_pic5) {
+        maxIndex = 5;
+      }
+
+      if (pic.fs_pic6) {
+        maxIndex = 6;
+      }
+
+      if (pic.fs_pic7) {
+        maxIndex = 7;
+      }
 
 
-  $scope.switchPic = function(pic) {
-    $('.picture-present').attr('src',pic);
+
+      if(index_number == 0 && pic.fs_pic){
+        index_number ++;
+        $('.picture-present').attr('src',pic.fs_pic);
+      } else
+      if(index_number == 1 && pic.fs_pic2){
+        index_number ++;
+        $('.picture-present').attr('src',pic.fs_pic2);
+      } else
+      if(index_number == 2 && pic.fs_pic3) {
+        index_number ++;
+        $('.picture-present').attr('src',pic.fs_pic3);
+      } else
+      if(index_number == 3 && pic.fs_pic4) {
+        index_number ++;
+        $('.picture-present').attr('src',pic.fs_pic4);
+      } else
+      if(index_number == 4 && pic.fs_pic5) {
+        index_number ++;
+        $('.picture-present').attr('src',pic.fs_pic5);
+      } else
+      if(index_number == 5 && pic.fs_pic6) {
+        index_number ++;
+        $('.picture-present').attr('src',pic.fs_pic6);
+      } else
+      if(index_number == 6 && pic.fs_pic7) {
+        index_number ++;
+        $('.picture-present').attr('src',pic.fs_pic7);
+      } else
+      if(index_number == 7 && pic.fs_pic) {
+        index_number = 1;
+        $('.picture-present').attr('src',pic.fs_pic);
+      }
+
+
+      if (index_number == maxIndex) index_number = 0;
+
+
+      $scope.index_number = index_number;
+
+    }
+
+
   };
 
 

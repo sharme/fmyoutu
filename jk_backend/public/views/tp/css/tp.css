@@ -35,6 +35,11 @@
   margin-top: 80px;
   cursor: pointer;
 }
+
+.mapboxgl-canvas {
+  width: 100%;
+}
+
 .trip_image {
   border: solid 1px #AEAEAE;
   height: 35px;
