@@ -24,7 +24,7 @@ router.get('/index', function(req, res, next) {
 
   var secret = req.param("secret");
   if(secret == '123456qwertyuiop') {
-    var sql = "select fs_id, fs_status, fs_smallImg, fs_des, fs_from,(select u_name from jk_users as jku where jku.u_id=jkf.u_id) as createBy, fs_create_time from jk_footsteps as jkf order by jkf.fs_create_time desc;";
+    var sql = "select fs_id, fs_status, fs_smallImg, fs_disPic, fs_des, fs_from,(select u_name from jk_users as jku where jku.u_id=jkf.u_id) as createBy, fs_create_time from jk_footsteps as jkf order by jkf.fs_create_time desc;";
     // var sql = "select fs_id, fs_status, fs_smallImg, fs_des, fs_from, fs_create_time from jk_footsteps order by fs_create_time desc;";
     connection.query(sql, function (err, result) {
       approve = result;
@@ -67,7 +67,7 @@ router.get('/tags', function(req, res, next) {
 
   var secret = req.param("secret");
   if(secret == '123456qwertyuiop') {
-    var sql = "select fs_id, fs_status,fs_smallImg, fs_des, fs_from, fs_create_time from jk_footsteps where fs_status=1 order by fs_create_time";
+    var sql = "select fs_id, fs_status,fs_smallImg, fs_des, fs_disPic, fs_from, fs_create_time from jk_footsteps where fs_status=1 order by fs_create_time";
     connection.query(sql, function (err, result) {
       approve = result;
       // console.log(result);

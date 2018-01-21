@@ -56,8 +56,13 @@
   text-align: center;
   margin-top: 5px;
 }
+.foot_wrapper .foot_wrapper-main .foot_wrapper-comment {
+  float: left;
+  margin-bottom: 100px;
+}
 .foot_wrapper .foot_wrapper-main .foot_wrapper-main_profile {
   margin-top: 10px;
+  float: left;
 }
 .foot_wrapper .foot_wrapper-main .foot_wrapper-main_profile img {
   width: 35px;
@@ -90,8 +95,8 @@
   margin: 10px;
 }
 .foot_wrapper .foot_wrapper-main .foot_wrapper-main_follower-img img {
-  width: 35px;
-  height: 35px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
 .foot_wrapper .foot_wrapper-main .foot_wrapper-main_distance {

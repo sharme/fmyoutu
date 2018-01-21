@@ -26,51 +26,104 @@
     </div>
 
     <div>
-
     </div>
-
-
 
 
 <div style="min-height: 400px;">
-    <div id="footstep-list" class="footstep-list" infinite-scroll="loadMore()" infinite-scroll-distance="1" infinite-scroll-disabled="isbusy" infinite-scroll-immediate-check="true">
-        <div class="profile_down-create" ng-click="createBtn()">发布</div>
-        <div id="footstep-list-div" class="footstep-list-div bgColorChange{{result.fs_id}}" ng-mouseleave="bgColorRemove(result.fs_id)" ng-mouseenter="bgColorChange(result.fs_id)" ng-repeat="result in footsteps" >
-            <div class="footstep-list-div-pic">
-                <!--<div class="footstep_div-pic" style="background-image: url({{result.fs_pic}});">-->
-               <a href="#/foot/{{result.fs_id}}"> <img ng-src="{{result.fs_smallImg}}"></a>
-            </div>
-            <div class="footstep-list-div_info">
-            <span class="footstep-list-div-createTime">{{result.fs_create_time | date: 'yyyy-MM-dd HH:mm'}}</span>
-            <!--<hr>-->
-            <div class="footstep-list-div-desc">
-                <div>
-                    <p class="footstep-list-div-desc_info">{{result.fs_des}}</p>
-                    <p style="color: grey;">{{result.fs_from}}</p>
-                    <div>
-                        想去: {{result.sticks}}
-                        喜欢: {{result.likes}}
-                    </div>
-                    <!--<div>-->
-                        <!--<button class="stick-footstep" ng-click="stickBtn(result.fs_id)">收藏</button>&nbsp;&nbsp;{{result.sticks}}-->
-                        <!--<button class="like-footstep" ng-click="likeBtn(result.fs_id)">喜欢</button>&nbsp;&nbsp;{{result.likes}}-->
-                    <!--</div>-->
-                </div>
-            </div>
 
-            <div class="footstep-list-div-comment" ng-if="result.cm_content">
-                <div class="footstep-list-div-comment-avatar">
-                    <img ng-src="{{result.u_avatar}}" class="footstep-list-div-comment-avatar-img">
+
+    <!--<div id="footstep-list" class="footstep-list" infinite-scroll="loadMore()" infinite-scroll-distance="1" infinite-scroll-disabled="isbusy" infinite-scroll-immediate-check="true">-->
+        <!--<div class="profile_down-create" ng-click="createBtn()">发布</div>-->
+        <!--<div id="footstep-list-div" class="footstep-list-div bgColorChange{{result.fs_id}}" ng-mouseleave="bgColorRemove(result.fs_id)" ng-mouseenter="bgColorChange(result.fs_id)" ng-repeat="result in footsteps" >-->
+            <!--<div class="footstep-list-div-pic">-->
+                <!--&lt;!&ndash;<div class="footstep_div-pic" style="background-image: url({{result.fs_pic}});">&ndash;&gt;-->
+               <!--<a href="#/foot/{{result.fs_id}}"> <img ng-src="{{result.fs_disPic}}"></a>-->
+            <!--</div>-->
+            <!--<div class="footstep-list-div_info">-->
+            <!--<span class="footstep-list-div-createTime">{{result.fs_create_time | date: 'yyyy-MM-dd HH:mm'}}</span>-->
+            <!--&lt;!&ndash;<hr>&ndash;&gt;-->
+            <!--<div class="footstep-list-div-desc">-->
+                <!--<div>-->
+                    <!--<p class="footstep-list-div-desc_info">{{result.fs_des}}</p>-->
+                    <!--<p style="color: grey;">{{result.fs_from}}</p>-->
+                    <!--<div>-->
+                        <!--想去: {{result.sticks}}-->
+                        <!--喜欢: {{result.likes}}-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;<div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<button class="stick-footstep" ng-click="stickBtn(result.fs_id)">收藏</button>&nbsp;&nbsp;{{result.sticks}}&ndash;&gt;-->
+                        <!--&lt;!&ndash;<button class="like-footstep" ng-click="likeBtn(result.fs_id)">喜欢</button>&nbsp;&nbsp;{{result.likes}}&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="footstep-list-div-comment" ng-if="result.cm_content">-->
+                <!--<div class="footstep-list-div-comment-avatar">-->
+                    <!--<img ng-src="{{result.u_avatar}}" class="footstep-list-div-comment-avatar-img">-->
+                <!--</div>-->
+                <!--<div class="footstep-list-div-comment-content">-->
+                    <!--<div>{{result.u_name}}</div>-->
+                    <!--<div style="overflow-wrap: break-word;" ng-bind-html="result.cm_content"></div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash;<div class="footstep-list_profile_end"></div>&ndash;&gt;-->
+    <!--</div>-->
+
+    <div class="profile_down-create" ng-click="createBtn()">发布</div>
+    <div class='trip_list' infinite-scroll="loadMore()" infinite-scroll-distance="2" infinite-scroll-disabled="isbusy" infinite-scroll-immediate-check="false">
+
+        <div class='trip bgColorChange{{trip.fs_id}}' ng-repeat="trip in tripList track by $index" ng-mouseleave="bgColorRemove(trip.fs_id)" ng-mouseenter="bgColorChange(trip.fs_id)">
+            <div class='trip_header'>
+                <div class='trip_image'>
+                    <image class='trip_image' ng-src='{{trip.u_tag}}'></image>
                 </div>
-                <div class="footstep-list-div-comment-content">
-                    <div>{{result.u_name}}</div>
-                    <div style="overflow-wrap: break-word;" ng-bind-html="result.cm_content"></div>
+                <div class='trip_info'>
+                    <text>{{trip.u_tag_name}}</text>
+                    <text style='margin-left:10px;'>{{trip.fs_create_time | date: 'HH:mm yyyy-MM-dd'}}</text>
+                </div>
+
+            </div>
+            <div class='trip_main' ng-click="loginCheck(trip.fs_id)">
+                <div class='trip_main_title'>
+                    <text>{{trip.fs_des}}​​​​</text>
+                </div>
+                <div class='trip_main_desc'>
+                    <rich-text>
+                        {{trip.t_content}}
+                    </rich-text>
+                </div>
+                <div class='trip_main_images'>
+                    <div ng-if="trip.fs_disPic">
+                        <image class='trip_main_images_image' ng-src='{{trip.fs_disPic}}'></image>
+                    </div>
+                    <div ng-if="trip.fs_disPic2">
+                        <image class='trip_main_images_image' ng-src='{{trip.fs_disPic2}}'></image>
+                    </div>
+                    <div ng-if="trip.fs_disPic3">
+                        <image class='trip_main_images_image' ng-src='{{trip.fs_disPic3}}'></image>
+                    </div>
+                    <div ng-if="trip.fs_disPic4">
+                        <image class='trip_main_images_image' ng-src='{{trip.fs_disPic4}}'></image>
+                    </div>
                 </div>
             </div>
+            <div class="t_bottom">
+                <div class="t_like">
+                    <image class="like_img{{trip.fs_id}}" src="img/thumbs-up.png" ng-click="stickBtn(trip.fs_id, trip.u_id)"></image>
+                    <span class="btnStickNum{{trip.fs_id}}">{{trip.sticks}}</span>
+                </div>
+                <div class="t_comment">
+                    <img src="img/text-message12.png"> &nbsp; {{trip.comments}}
+                </div>
             </div>
         </div>
-        <!--<div class="footstep-list_profile_end"></div>-->
+        <div class="the_end">
+            没有了.
+        </div>
     </div>
+
 
 
     <div class="follow-list">

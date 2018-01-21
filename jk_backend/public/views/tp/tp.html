@@ -1,7 +1,5 @@
 
 
-<div class='trip_list' infinite-scroll="loadMore()" infinite-scroll-distance="2" infinite-scroll-disabled="isbusy" infinite-scroll-immediate-check="false">
-
     <!--<div id="chart" style="border: solid 1px #AEAEAE; margin-bottom: 20px; margin-top: 20px;">-->
     <!--</div>-->
 
@@ -153,6 +151,7 @@
         <!--});-->
     <!--</script>-->
 
+<div class='trip_list' infinite-scroll="loadMore()" infinite-scroll-distance="2" infinite-scroll-disabled="isbusy" infinite-scroll-immediate-check="false">
 
     <div class='find'>
         <input placeholder='快速搜索' type="text" ng-keypress="tpFilter()" class='search_bar' maxlength='-1'></input>
@@ -161,7 +160,7 @@
     <div class='trip bgColorChange{{trip.fs_id}}' ng-repeat="trip in tripList track by $index" ng-mouseleave="bgColorRemove(trip.fs_id)" ng-mouseenter="bgColorChange(trip.fs_id)">
         <div class='trip_header'>
             <div class='trip_image'>
-                <image class='trip_image' src='{{trip.u_tag}}'></image>
+                <image class='trip_image' ng-src='{{trip.u_tag}}'></image>
             </div>
             <div class='trip_info'>
                 <text>{{trip.u_tag_name}}</text>
@@ -179,21 +178,21 @@
                 </rich-text>
             </div>
             <div class='trip_main_images'>
-                <div ng-if="trip.fs_pic">
-                    <image class='trip_main_images_image' src='{{trip.fs_pic}}'></image>
+                <div ng-if="trip.fs_disPic">
+                    <image class='trip_main_images_image' ng-src='{{trip.fs_disPic}}'></image>
                 </div>
-                <div ng-if="trip.fs_pic2">
-                    <image class='trip_main_images_image' src='{{trip.fs_pic2}}'></image>
+                <div ng-if="trip.fs_disPic2">
+                    <image class='trip_main_images_image' ng-src='{{trip.fs_disPic2}}'></image>
                 </div>
-                <div ng-if="trip.fs_pic3">
-                    <image class='trip_main_images_image' src='{{trip.fs_pic3}}'></image>
+                <div ng-if="trip.fs_disPic3">
+                    <image class='trip_main_images_image' ng-src='{{trip.fs_disPic3}}'></image>
                 </div>
-                <div ng-if="trip.fs_pic4">
-                    <image class='trip_main_images_image' src='{{trip.fs_pic4}}'></image>
+                <div ng-if="trip.fs_disPic4">
+                    <image class='trip_main_images_image' ng-src='{{trip.fs_disPic4}}'></image>
                 </div>
             </div>
         </div>
-            <div>
+            <div class="t_bottom">
                 <div class="t_like">
                     <image class="like_img{{trip.fs_id}}" src="img/thumbs-up.png" ng-click="stickBtn(trip.fs_id, trip.u_id)"></image>
                     <span class="btnStickNum{{trip.fs_id}}">{{trip.sticks}}</span>
