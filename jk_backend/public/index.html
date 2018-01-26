@@ -2,7 +2,8 @@
 <html ng-app="jk_backend">
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
 <head ng-controller="defaultCtrl">
-  <title>有图旅行</title>
+  <title>【有图旅行】 去发现, 去探索 一辈子的旅行</title>
+  <meta name="description" content="【有图旅行】唯一且专业的有图旅行分享社区. 聚集旅行达人, 专注高品质的旅行动态分享, 跟着旅行家去看世界, 世界不再遥不可及.">
   <link rel="icon" type="image/gif/png" href="img/youtu.png">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
@@ -60,14 +61,6 @@
   <div class="header_slogo">
       去发现, 去探索 一辈子的旅行
   </div>
-    <!--<a href="#/adv/index" class="header-homepage"><div class="header-div-style">你的旅行</div></a>-->
-    <!--<a href="#/tool/pixel" class="header-homepage"><div class="header-div-style">图裁剪</div></a>-->
-
-    <!--<div class="qr_fmyoutu">-->
-        <!--&lt;!&ndash;<div style="text-align: center; font-weight: bold;">&nbsp;联系我</div>&ndash;&gt;-->
-        <!--<img src="img/QR_fmyoutu.png" style="width:80px;margin: 5px 12px;">-->
-    <!--</div>-->
-
     <div class="header-right" ng-controller="LoginController">
     <div class="header-right-logout">
     <span id="login_username"></span><span style="line-height: 2;"> <a ng-click="logout()" href="javascript: void(0);">登出</a></span>
@@ -87,21 +80,23 @@
         <a href="#/community/index" class="header-homepage" ng-click="msgShow()"><div class="header-div-style">留言</div></a>
     </div>
 
-  <div class="notification">
-    <div class="notification-profile-edit"><a href="#/profile/edit">修改个人信息</a></div>
-    <!--<div class="notification-msg-title">消息</div>-->
-    <!--<hr>-->
-    <div class="notification-msg-content">
+    <div class="notification">
+        <div class="notification-profile-edit"><a href="#/profile/edit">修改个人信息</a></div>
+        <!--<div class="notification-msg-title">消息</div>-->
+        <!--<hr>-->
+        <div class="notification-msg-content">
         <span ng-repeat="noti in notifications">
         {{noti.u_name}}&nbsp;&nbsp;{{noti.action}}了你&nbsp;&nbsp;<a style={{noti.nf_status==0?"color:red;":"color:gray;"}} ng-click="linkTo(noti.type,noti.c_id,noti.nf_id)">{{noti.type == '图友'?'': '的' + noti.type}}</a>&nbsp;&nbsp;
             <span class="notification-msg-content-time">{{noti.nf_create_time | date: 'yyyy-MM-dd HH:mm'}}</span>
             <hr>
         </span>
+        </div>
+        <div style="margin-top: 30px; float: right;">点击头像关闭</div>
     </div>
-      <div style="margin-top: 30px; float: right;">点击头像关闭</div>
-  </div>
 
 </div>
+
+
 <!--<a href="#/tool/pixel">-->
 <!--<div class="share">-->
     <!--我也要裁剪图片-->
