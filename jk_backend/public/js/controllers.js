@@ -1071,16 +1071,6 @@ buybsControllers.controller('pixelController', ['$scope', '$cookies', '$window',
     $window.location.href = '#/profile?u_id=' + $cookies.get('u_id');
   };
 
-  var progress = 1;
-  var progressBar = function(){
-    progress += 1;
-    if(progress < 99) {
-      $('#myBar').width(progress + "%");
-      $('#myBar').text(progress + "%");
-    } else {
-      clearInterval(progressBar);
-    }
-  };
 
   $scope.footstep = {
     fs_pic : '',
@@ -1139,6 +1129,7 @@ buybsControllers.controller('pixelController', ['$scope', '$cookies', '$window',
       if(result.errno){
         alert("创建失败, 请稍后再试.");
       } else {
+
         $window.location.href = '#/profile?u_id=' + $cookies.get('u_id');
       }
     }, function(error){
@@ -1146,13 +1137,23 @@ buybsControllers.controller('pixelController', ['$scope', '$cookies', '$window',
     });
   };
 
-  
+  var progress = 1;
+  var progressBar = function(){
+    progress += 1;
+    // progress = parseFloat(progress,4);
+    if(progress < 99) {
+      $('#myBar').width(progress + "%");
+      $('#myBar').text(progress + "%");
+    } else {
+      clearInterval(progressBar);
+    }
+  };
   
   // resize pic and upload to server
   $scope.uploadFile = function(file, num) {
     progress = 1;
     console.log('upload file');
-    setInterval(progressBar, 20);
+    setInterval(progressBar, 100);
 
     var file_data = $(file).prop('files')[0];
     var form_data = new FormData();
@@ -1177,6 +1178,8 @@ buybsControllers.controller('pixelController', ['$scope', '$cookies', '$window',
       cache: false,
       type: "POST",
       success: function (res) {
+        // clearInterval(progressBar);
+        progress = 100;
         $('#myBar').width("100%");
         $('#myBar').text('上传完成!');
         console.log('successfully uploaded, URL: ' + res);
