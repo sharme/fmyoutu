@@ -154,10 +154,10 @@
 <div class='trip_list' infinite-scroll="loadMore()" infinite-scroll-distance="2" infinite-scroll-disabled="isbusy" infinite-scroll-immediate-check="false">
 
     <div class='find'>
-        <input placeholder='快速搜索' type="text" ng-keypress="tpFilter()" class='search_bar' maxlength='-1'></input>
+        <input placeholder='快速搜索' type="text" ng-keypress="tpFilter()" class='search_bar' maxlength='-1'/>
     </div>
 
-    <div class='trip bgColorChange{{trip.fs_id}}' ng-repeat="trip in tripList track by $index" ng-mouseleave="bgColorRemove(trip.fs_id)" ng-mouseenter="bgColorChange(trip.fs_id)">
+    <div class='trip ' ng-repeat="trip in tripList track by $index" >
         <div class='trip_header'>
             <div class='trip_image'>
                 <image class='trip_image' ng-src='{{trip.u_tag}}'></image>
@@ -165,10 +165,11 @@
             <div class='trip_info'>
                 <text>{{trip.u_tag_name}}</text>
                 <text style='margin-left:10px;'>{{trip.fs_create_time | date: 'HH:mm yyyy-MM-dd'}}</text>
+                <div class="trip_info_follow">关注大神旅行</div>
             </div>
 
         </div>
-        <div class='trip_main' ng-click="loginCheck(trip.fs_id)">
+        <div class='trip_main bgColorChange{{trip.fs_id}}' ng-click="loginCheck(trip.fs_id)" ng-mouseleave="bgColorRemove(trip.fs_id)" ng-mouseenter="bgColorChange(trip.fs_id)">
             <div class='trip_main_title'>
                 <text>{{trip.fs_des}}​​​​</text>
             </div>
