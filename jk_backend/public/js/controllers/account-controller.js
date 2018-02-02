@@ -336,7 +336,7 @@ account.controller('RegisterCtrl', ['$scope', '$cookies', '$window','$http','$cs
 
     $scope.sendVerifyCode = function() {
 
-        if ($('#register-form-phoneNumber').val().length == 11 && $('#register-form-password').val().length >= 8 && $('#register-form-username').val().length > 4 ) {
+        if ($('#register-form-phoneNumber').val().length == 11 && $('#register-form-password').val().length >= 8 && $('#register-form-username').val().length > 2 ) {
 
             var req = {
                 method: 'GET',
@@ -376,7 +376,7 @@ account.controller('RegisterCtrl', ['$scope', '$cookies', '$window','$http','$cs
             $('.validation_msg').html("请输入正确的手机号码");
         } else if ($('#register-form-password').val().length < 8){
             $('.validation_msg').html("密码长度不能低于8位");
-        } else if ($('#register-form-username').val().length < 4){
+        } else if ($('#register-form-username').val().length < 3){
             $('.validation_msg').html("用户名长度太短");
         }
     }
