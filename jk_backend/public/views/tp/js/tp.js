@@ -7,7 +7,7 @@ var community = angular.module('buybsControllers');
 // Controllers for community.
 community.controller('TripCtrl', ['$scope', '$cookies', '$window', '$http', '$css', '$sce', function($scope, $cookies, $window, $http, $css, $sce){
 
-    $http({method: 'GET', url: ipAddress + '/footsteps/getFootsteps', params:{index_start: 0, count: 12}})
+    $http({method: 'GET', url: ipAddress + '/footsteps/getFootsteps', params:{index_start: 0, count: 12, u_id: $cookies.get('u_id')}})
         .success(function(data){
             $scope.tripList = data;
         },function(error){
@@ -148,6 +148,48 @@ community.controller('TripCtrl', ['$scope', '$cookies', '$window', '$http', '$cs
 
     };
 
+
+
+    $scope.followUpBtn = function(id) {
+
+        if($cookies.get('u_id') == undefined){
+            $window.location.href = '#/login';
+            return;
+        }
+
+        if($(".foot_wrapper-main_follow").text() == "已关注") {
+            return;
+        }
+
+        $http({method: 'GET', url: ipAddress + '/followers/getFollowCheck', params:{u_id:id, fl_fl_id:$cookies.get('u_id')}})
+            .success(function(data){
+                if(data.length == 0){
+                    var reqData = {
+                        u_id: id,
+                        fl_fl_id: $cookies.get('u_id')
+                    };
+                    var req = {
+                        method: 'POST',
+                        url: ipAddress + '/followers/add',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        data: reqData
+                    };
+
+                    $http(req).success(function(result){
+                        addEvent($http, $window, $cookies.get('u_id'),eFollow,id,ePeople,id, true);
+                    }, function(error){
+                        console.log(error);
+                    });
+                } else {
+                    $(".trip_info_follow").text('已关注');
+                }
+
+            }, function(error){
+                $scope.error = error;
+            });
+    };
 
 
 

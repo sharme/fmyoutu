@@ -32,7 +32,6 @@
 }
 .create_footstep .create_footstep-info .create_footstep-info_img_list .create_footstep-info_img_list_pic {
   width: 75px;
-  height: 75px;
   float: left;
   margin-right: 10px;
 }
@@ -76,6 +75,7 @@
 }
 .create_footstep .create_footstep-info .create_footstep-info-div {
   margin-top: 10px;
+  float: left;
 }
 .create_footstep .create_footstep-info .create_footstep-info-pic,
 .create_footstep .create_footstep-info .create_footstep-info-desc,
@@ -112,6 +112,8 @@
   width: 100%;
   height: 30px;
   background-color: #ddd;
+  float: left;
+  margin-top: 10px;
 }
 #myBar {
   position: absolute;

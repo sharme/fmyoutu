@@ -29,6 +29,7 @@ router.get('/getFootsteps', function(req, res, next) {
              "(select count(*) from jk_comments as jkc where jkc.fs_id = jkf.fs_id) as comments," + 
             "(select u_avatar from jk_users as jku where jku.u_id=jkf.u_id) as u_tag," +
             "(select u_name from jk_users as jku where jku.u_id=jkf.u_id) as u_tag_name," +
+            "(select count(*) from jk_followers as jkfo where jkfo.u_id = jkf.u_id and jkfo.fl_fl_id = ?) as follow," +
             "(select count(*) from jk_sticks as jks where jks.fs_id = jkf.fs_id and jks.u_id=?) as stick_status," +
             "(select count(*) from jk_likes as jkl where jkl.fs_id = jkf.fs_id) as likes," +
             "(select count(*) from jk_likes as jkl where jkl.fs_id = jkf.fs_id and jkl.u_id=?) as like_status," +
@@ -36,7 +37,7 @@ router.get('/getFootsteps', function(req, res, next) {
             "(select (select u_name from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc where jkc.fs_id=jkf.fs_id limit 1) as u_name," +
             "(select cm_content from jk_comments as jkc where jkc.fs_id = jkf.fs_id limit 1) as cm_content," +
             "fs_create_time " +
-            " from jk_footsteps as jkf where jkf.fs_status=1 ",[req.param('u_id'),req.param('u_id')]);
+            " from jk_footsteps as jkf where jkf.fs_status=1 ",[req.param('u_id'),req.param('u_id'),req.param('u_id')]);
     } else {
         criteriaSQL = "select fs_id, u_id, fs_disPic, fs_disPic2, fs_disPic3, fs_disPic4, fs_des, fs_from," +
             "(select count(*) from jk_sticks as jks where jks.fs_id = jkf.fs_id) as sticks," +
@@ -44,6 +45,7 @@ router.get('/getFootsteps', function(req, res, next) {
             "(select u_avatar from jk_users as jku where jku.u_id=jkf.u_id) as u_tag," +
             "(select u_name from jk_users as jku where jku.u_id=jkf.u_id) as u_tag_name," +
             "(select count(*) from jk_likes as jkl where jkl.fs_id = jkf.fs_id) as likes," +
+            "(select count(*) from jk_followers as jkfo where jkfo.u_id = jkf.u_id and jkfo.fl_fl_id = 0) as follow," +
             "(select (select u_avatar from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc where jkc.fs_id=jkf.fs_id limit 1) as u_avatar," +
             "(select (select u_name from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc where jkc.fs_id=jkf.fs_id limit 1) as u_name," +
             "(select cm_content from jk_comments as jkc where jkc.fs_id = jkf.fs_id limit 1) as cm_content," +

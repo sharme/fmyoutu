@@ -165,7 +165,7 @@
             <div class='trip_info'>
                 <text>{{trip.u_tag_name}}</text>
                 <text style='margin-left:10px;'>{{trip.fs_create_time | date: 'HH:mm yyyy-MM-dd'}}</text>
-                <div class="trip_info_follow">关注大神旅行</div>
+                <div class="trip_info_follow" ng-click="followUpBtn(trip.u_id)">{{trip.follow == 0?'关注大神旅行': '已关注'}}</div>
             </div>
 
         </div>
