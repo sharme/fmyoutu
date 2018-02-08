@@ -771,6 +771,8 @@ buybsControllers.controller('FootDetailCtrl', ['$scope', '$routeParams', '$http'
         });
   };
 
+
+
   $scope.addComment = {
     cm_content: '',
     fs_id: '',
@@ -905,7 +907,7 @@ buybsControllers.controller('FootDetailCtrl', ['$scope', '$routeParams', '$http'
 buybsControllers.controller('ProfileController', ['$scope', '$http', '$window','$cookies','$routeParams','$css', function($scope, $http, $window, $cookies, $routeParams, $css) {
 
 
-  $http({method: 'GET', url: ipAddress + '/footsteps/getFootsteps', params:{u_id: $cookies.get("u_id"), index_start: 0, count: 12}})
+  $http({method: 'GET', url: ipAddress + '/footsteps/getFootstepsByUID', params:{u_id: $cookies.get("u_id"), index_start: 0, count: 12}})
       .success(function(data){
         $scope.tripList = data;
       },function(error){
@@ -929,7 +931,7 @@ buybsControllers.controller('ProfileController', ['$scope', '$http', '$window','
         $scope.isbusy = true;
         $http({
           method: 'GET',
-          url: ipAddress + '/footsteps/getFootsteps',
+          url: ipAddress + '/footsteps/getFootstepsByUID',
           params: {index_start: $scope.tripList.length, count: 3, tag: $scope.tag, u_id: $cookies.get("u_id")}
         }).success(function (data) {
           if (data.length > 0) {
@@ -1559,7 +1561,7 @@ buybsControllers.controller('headerController', ['$scope', '$cookies', '$window'
 
     $http({method: 'POST', url: ipAddress + '/notifications/consume', params: {nf_id: nf_id}})
         .success(function(data){
-          if(type === '足迹'){
+          if(type === '旅行'){
             $window.location.href = '#/foot/' + c_id;
           } else {
             $window.location.href = '#/community/topics/' + c_id;

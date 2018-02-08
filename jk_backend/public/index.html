@@ -86,7 +86,7 @@
         <!--<hr>-->
         <div class="notification-msg-content">
         <span ng-repeat="noti in notifications">
-        {{noti.u_name}}&nbsp;&nbsp;{{noti.action}}了你&nbsp;&nbsp;<a style={{noti.nf_status==0?"color:red;":"color:gray;"}} ng-click="linkTo(noti.type,noti.c_id,noti.nf_id)">{{noti.type == '图友'?'': '的' + noti.type}}</a>&nbsp;&nbsp;
+        {{noti.u_name}}&nbsp;&nbsp;{{noti.action}} {{noti.action == '发布'?'了新': '了你'}}&nbsp;&nbsp;<a style={{noti.nf_status==0?"color:red;":"color:gray;"}} ng-click="linkTo(noti.type,noti.c_id,noti.nf_id)">{{noti.type == '图友'?'': '的' + noti.type}}</a>&nbsp;&nbsp;
             <span class="notification-msg-content-time">{{noti.nf_create_time | date: 'yyyy-MM-dd HH:mm'}}</span>
             <hr>
         </span>

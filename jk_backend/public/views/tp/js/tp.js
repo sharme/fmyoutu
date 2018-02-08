@@ -14,6 +14,9 @@ community.controller('TripCtrl', ['$scope', '$cookies', '$window', '$http', '$cs
             $scope.error = error;
         });
 
+    $scope.current_uID = $cookies.get('u_id')
+
+
     $http({method: 'GET', url: ipAddress + '/footsteps/getFootstepsNumber'})
         .success(function(data){
             $scope.number = data[0].number;

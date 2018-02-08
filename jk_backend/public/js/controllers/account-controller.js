@@ -122,7 +122,10 @@ account.controller('EmailRecoveryPwdCtrl', ['$scope', '$cookies', '$window','$ht
     };
 
     $scope.submit = function(){
-        if ($('#register_form').valid()) {
+        if ($('#register-form-email').val().length > 3) {
+
+            $('#register-form-email').attr('disabled', "disabled");
+
             var postData = $scope.user;
             var req = {
                 method: 'POST',
@@ -165,7 +168,10 @@ account.controller('EmailResetCtrl', ['$scope', '$cookies', '$window','$http','$
             return;
         }
 
-        if ($('#register_form').valid()) {
+        if ($('#register-form-password').val().length > 7) {
+
+            $('#register-form-password').attr('disabled', "disabled");
+
             var postData = $scope.user;
             var req = {
                 method: 'POST',

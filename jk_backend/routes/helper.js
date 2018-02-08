@@ -8,12 +8,14 @@ var helper = module.exports = {
         var smallFolderPath = __dirname.substr(0, __dirname.length - 7) + "/public/images/small/" + u_id;
         var bigFolderPath = __dirname.substr(0, __dirname.length - 7) + "/public/images/big/" + u_id;
         var mini = __dirname.substr(0, __dirname.length - 7) + "/public/images/mini/" + u_id;
+        var customFolderPath = __dirname.substr(0, __dirname.length - 7) + "/public/images/custom/" + u_id;
 
 
         helper.fs.mkdir(originalFolderPath, 0777, function(result){});
         helper.fs.mkdir(bigFolderPath, 0777, function(result){});
         helper.fs.mkdir(smallFolderPath, 0777,function(result){});
         helper.fs.mkdir(mini, 0777,function(result){});
+        helper.fs.mkdir(customFolderPath, 0777,function(result){});
     }
 
 };

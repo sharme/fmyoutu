@@ -37,7 +37,7 @@ router.get('/getFootsteps', function(req, res, next) {
             "(select (select u_name from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc where jkc.fs_id=jkf.fs_id limit 1) as u_name," +
             "(select cm_content from jk_comments as jkc where jkc.fs_id = jkf.fs_id limit 1) as cm_content," +
             "fs_create_time " +
-            " from jk_footsteps as jkf where jkf.fs_status=1 ",[req.param('u_id'),req.param('u_id'),req.param('u_id')]);
+            " from jk_footsteps as jkf where jkf.fs_status=1",[req.param('u_id'),req.param('u_id'),req.param('u_id')]);
     } else {
         criteriaSQL = "select fs_id, u_id, fs_disPic, fs_disPic2, fs_disPic3, fs_disPic4, fs_des, fs_from," +
             "(select count(*) from jk_sticks as jks where jks.fs_id = jkf.fs_id) as sticks," +
@@ -152,15 +152,29 @@ router.get('/getFootstepsByTag', function(req, res, next) {
 });
 
 router.get('/getFootstepsByUID', function(req, res, next) {
-    var criteriaSQL = mysql.format("select fs_id,u_id,fs_pic, fs_disPic, fs_des," +
+    // var criteriaSQL = mysql.format("select fs_id,u_id,fs_pic, fs_disPic, fs_des," +
+    //     "(select count(*) from jk_sticks as jks where jks.fs_id = jkf.fs_id) as sticks," +
+    //     "(select count(*) from jk_comments as jkc where jkc.fs_id = jkf.fs_id) as comments," +
+    //     "(select u_avatar from jk_users as jku where jku.u_id=jkf.u_id) as u_tag," +
+    //     "(select count(*) from jk_likes as jkl where jkl.fs_id = jkf.fs_id) as likes," +
+    //     "(select (select u_avatar from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc limit 1) as u_avatar," +
+    //     "(select (select u_name from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc limit 1) as u_name," +
+    //     "(select cm_content from jk_comments as jkc where jkc.fs_id = jkf.fs_id limit 1) as cm_content, fs_smallImg, fs_bigImg, fs_create_time" +
+    //     " from jk_footsteps as jkf where jkf.u_id = ?",[req.param('u_id')]);
+    var criteriaSQL = mysql.format("select fs_id, u_id, fs_disPic, fs_disPic2, fs_disPic3, fs_disPic4, fs_des, fs_from," +
         "(select count(*) from jk_sticks as jks where jks.fs_id = jkf.fs_id) as sticks," +
         "(select count(*) from jk_comments as jkc where jkc.fs_id = jkf.fs_id) as comments," +
         "(select u_avatar from jk_users as jku where jku.u_id=jkf.u_id) as u_tag," +
+        "(select u_name from jk_users as jku where jku.u_id=jkf.u_id) as u_tag_name," +
+        "(select count(*) from jk_followers as jkfo where jkfo.u_id = jkf.u_id and jkfo.fl_fl_id = ?) as follow," +
+        "(select count(*) from jk_sticks as jks where jks.fs_id = jkf.fs_id and jks.u_id=?) as stick_status," +
         "(select count(*) from jk_likes as jkl where jkl.fs_id = jkf.fs_id) as likes," +
-        "(select (select u_avatar from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc limit 1) as u_avatar," +
-        "(select (select u_name from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc limit 1) as u_name," +
-        "(select cm_content from jk_comments as jkc where jkc.fs_id = jkf.fs_id limit 1) as cm_content, fs_smallImg, fs_bigImg, fs_create_time" +
-        " from jk_footsteps as jkf where jkf.u_id = ?",[req.param('u_id')]);
+        "(select count(*) from jk_likes as jkl where jkl.fs_id = jkf.fs_id and jkl.u_id=?) as like_status," +
+        "(select (select u_avatar from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc where jkc.fs_id=jkf.fs_id limit 1) as u_avatar," +
+        "(select (select u_name from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc where jkc.fs_id=jkf.fs_id limit 1) as u_name," +
+        "(select cm_content from jk_comments as jkc where jkc.fs_id = jkf.fs_id limit 1) as cm_content," +
+        "fs_create_time " +
+        " from jk_footsteps as jkf where jkf.fs_status=1 and jkf.u_id =? ",[req.param('u_id'),req.param('u_id'),req.param('u_id'),req.param('u_id')]);
 
     criteriaSQL += " order by fs_create_time desc";
     if(req.param('index_start') && req.param('count')) {
@@ -198,7 +212,12 @@ router.get('/getStickFootstepsByUID', function(req, res, next) {
         "(select (select u_name from jk_users as jku where jku.u_id = jkc.u_id) from jk_comments as jkc limit 1) as u_name," +
         "(select cm_content from jk_comments as jkc where jkc.fs_id = jkf.fs_id limit 1) as cm_content, fs_smallImg, fs_bigImg, fs_create_time" +
         " from jk_footsteps as jkf where jkf.fs_id IN (select fs_id from jk_sticks as jks where jks.u_id = ?)",[req.param('u_id')]);
+
+    if(req.param('fs_from')){
+        criteriaSQL += " and jkf.fs_from='" + req.param('fs_from') + "'";
+    }
     criteriaSQL += " order by fs_create_time desc";
+
     if(req.param('index_start') && req.param('count')) {
         criteriaSQL += " limit " + req.param('index_start') + "," + req.param('count');
     }
@@ -230,6 +249,37 @@ router.post('/create', function(req, res, next) {
             if (err) {
                 res.send(err);
             } else {
+
+                var addEvent = mysql.format("insert into jk_events(u_id,et_type,et_create_time) values (?,?,?)",[req.body.u_id, 'publish',date]);
+                connection.query(addEvent);
+
+
+                connection.query('select jkf.fl_fl_id, (select fs_id from jk_footsteps as jkft where jkft.u_id=jkf.u_id order by fs_create_time desc limit 0,1) as fs_id from jk_followers as jkf where jkf.u_id = ' + req.body.u_id, function (err, result) {
+
+                    console.log(result);
+
+                    result.forEach(function(item, index){
+                        var fl_fl_id;
+                        var fs_id;
+                        for (key in item){
+                            console.log(key + " ; " + item[key]);
+
+                            if (key == 'fl_fl_id') {
+                                fl_fl_id = item[key];
+                            }
+                            if (key == 'fs_id') {
+                                fs_id = item[key];
+                            }
+                        }
+                        var sendNotification = mysql.format("insert into jk_notifications(u_id,at_id,nf_to,tp_id,c_id,nf_status,nf_create_time) values (?,?,?,?,?,?,?)",[ req.body.u_id, 5, fl_fl_id, 1, fs_id, 0, date]);
+                        connection.query(sendNotification);
+
+                    });
+
+
+                });
+
+
                 res.send(result);
             }
         })
