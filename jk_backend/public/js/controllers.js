@@ -1007,7 +1007,7 @@ buybsControllers.controller('ProfileController', ['$scope', '$http', '$window','
   var querySwitch = false;
   $scope.profileFootsteps = function(u_id) {
     querySwitch = false;
-    $http({method: 'GET', url: ipAddress + '/footsteps/getFootsteps', params:{u_id: $cookies.get("u_id"), index_start: 0, count: 12}})
+    $http({method: 'GET', url: ipAddress + '/footsteps/getFootstepsByUID', params:{u_id: $cookies.get("u_id"), index_start: 0, count: 12}})
         .success(function(data){
           $scope.tripList = data;
         },function(error){
