@@ -28,10 +28,11 @@
   width: 100%;
   padding: 10px;
   float: left;
+  color: #AEAEAE;
   text-align: center !important;
 }
 #register-content .register-content-wrapper .register-content-wrapper-main .register-content-wrapper-main-form {
-  padding: 15px !important;
+  padding: 0px !important;
   width: 100%;
   float: left;
   margin-bottom: 100px;
@@ -41,9 +42,9 @@
 }
 #register-content .register-content-wrapper .register-content-wrapper-main .register-content-wrapper-main-form label {
   display: inline-block;
-  font-size: 1.125em;
+  font-size: 12px;
   font-weight: 400;
-  margin: 0 0 15px 0;
+  margin: 0 0 0px 0;
   cursor: pointer;
   text-align: left;
 }
@@ -52,7 +53,7 @@
   width: 100%;
   display: block;
   line-height: 20px;
-  padding: 12px 13px;
+  padding: 6px 13px;
   border: #d6dadc 1px solid;
   font-size: 1em;
   font-weight: 300;
@@ -61,7 +62,7 @@
   border-radius: 3px;
 }
 #register-content .register-content-wrapper .register-content-wrapper-main .register-content-wrapper-main-form input[type='submit'] {
-  line-height: 20px;
+  line-height: 10px;
   display: block;
   float: left;
   position: relative;
@@ -102,6 +103,6 @@
   text-align: left;
 }
 #register-content .register-content-wrapper .register-content-wrapper-main .register-content-wrapper-main-form button {
-  padding: 10px;
+  padding: 5px;
   margin: 10px 0px;
 }

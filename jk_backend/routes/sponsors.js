@@ -1,3 +1,4 @@
+
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
@@ -16,18 +17,12 @@ connection.connect();
 
 var date = new Date();
 
-router.post('/add', function(req, res, next) {
-    var addSQL = mysql.format("insert into jk_messages(u_id,m_content,m_create_time, m_update_time) values (?,?,?,?)",[ req.body.u_id,req.body.m_content,date, date]);
 
-    connection.query(addSQL, function (err, result) {
-        if(err) {
-            res.send("Error: " + err);
-        } else {
-            res.send(result);
-        }
-    })
+router.get('/getSponsors', function(req, res, next) {
+
+
+
 });
-
 
 
 

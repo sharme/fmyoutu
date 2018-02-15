@@ -145,3 +145,24 @@ https://github.com/hacksparrow/node-easyimage
 
 
 
+# sponsors
+
+create table jk_sponsors (
+s_id INT UNIQUE KEY auto_increment,
+u_id INT NULL,
+s_name VARCHAR(200) NOT NULL,
+s_amount INT NULL,
+s_logo VARCHAR(200) NULL,
+s_link VARCHAR(200) NULL,
+s_extra VARCHAR(200) NULL,
+s_created_time DATETIME NOT NULL,
+s_created_by VARCHAR(50) NULL,
+s_updated_time DATETIME NULL,
+s_updated_by VARCHAR(50) NULL
+);
+
+
+
+
+
+

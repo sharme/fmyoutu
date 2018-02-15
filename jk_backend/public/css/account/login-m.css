@@ -19,16 +19,17 @@
   padding: 10px;
   float: left;
   text-align: center !important;
+  color: #AEAEAE;
 }
 #login-content .login-content-wrapper .login-content-wrapper-main .login-content-wrapper-main-form {
-  padding: 15px !important;
+  padding: 0px !important;
   width: 100%;
   float: left;
   margin-bottom: 100px;
 }
 #login-content .login-content-wrapper .login-content-wrapper-main .login-content-wrapper-main-form label {
   display: inline-block;
-  font-size: 1.125em;
+  font-size: 12px;
   font-weight: 400;
   margin: 0 0 15px 0;
   cursor: pointer;
@@ -39,7 +40,7 @@
   width: 100%;
   display: block;
   line-height: 20px;
-  padding: 12px 13px;
+  padding: 6px 13px;
   border: #d6dadc 1px solid;
   font-size: 1em;
   font-weight: 300;
@@ -49,7 +50,7 @@
 }
 #login-content .login-content-wrapper .login-content-wrapper-main .login-content-wrapper-main-form input[type='submit'],
 #login-content .login-content-wrapper .login-content-wrapper-main .login-content-wrapper-main-form input[type='button'] {
-  line-height: 20px;
+  line-height: 10px;
   display: block;
   float: left;
   position: relative;
@@ -70,7 +71,7 @@
   text-decoration: none;
 }
 #login-content .login-content-wrapper .login-content-wrapper-main .login-content-wrapper-main-form div {
-  padding: 15px 0px 15px 0px;
+  padding: 0px 0px 15px 0px;
   width: 100%;
   float: left;
 }
@@ -79,7 +80,6 @@
 #login-content .login-content-wrapper .login-content-wrapper-main .login-content-wrapper-main-form .go_back,
 #login-content .login-content-wrapper .login-content-wrapper-main .login-content-wrapper-main-form .register {
   text-align: center;
-  width: 80px;
   margin-right: 10px;
   margin-bottom: 10px;
   cursor: pointer;

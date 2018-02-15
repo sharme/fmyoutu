@@ -6,6 +6,26 @@
   border-radius: 5px;
   margin: 10px 0% 10px 0%;
 }
+.sponsors_title {
+  color: darkgrey;
+  width: 100%;
+  height: 50px;
+  font-size: 12px;
+}
+.sponsors {
+  width: 100%;
+  float: left;
+}
+.sponsors .sponsor {
+  width: 60px;
+  height: 60px;
+  float: left;
+  margin-right: 5px;
+}
+.sponsors .sponsor img {
+  width: 60px;
+  height: 60px;
+}
 .trip_list {
   /* border: solid 1px #AEAEAE; */
   margin: 5px 2% 0px 2%;
