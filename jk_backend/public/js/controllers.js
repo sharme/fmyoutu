@@ -1561,7 +1561,7 @@ buybsControllers.controller('headerController', ['$scope', '$cookies', '$window'
 
     $http({method: 'POST', url: ipAddress + '/notifications/consume', params: {nf_id: nf_id}})
         .success(function(data){
-          if(type === '旅行'){
+          if(type === '动态'){
             $window.location.href = '#/foot/' + c_id;
           } else {
             $window.location.href = '#/community/topics/' + c_id;
