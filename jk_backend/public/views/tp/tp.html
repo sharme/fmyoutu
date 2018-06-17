@@ -1,168 +1,17 @@
-
-
-    <!--<div id="chart" style="border: solid 1px #AEAEAE; margin-bottom: 20px; margin-top: 20px;">-->
-    <!--</div>-->
-
-    <!--<script type="text/javascript">-->
-        <!--$.get('../views/tp/data/weibo.json', function (weiboData) {-->
-
-
-            <!--weiboData = weiboData.map(function (serieData, idx) {-->
-                <!--var px = serieData[0] / 1000;-->
-                <!--var py = serieData[1] / 1000;-->
-                <!--var res = [-->
-                    <!--[px, py]-->
-                <!--];-->
-
-                <!--for (var i = 2; i < serieData.length; i += 2) {-->
-                    <!--var dx = serieData[i] / 1000;-->
-                    <!--var dy = serieData[i + 1] / 1000;-->
-                    <!--var x = px + dx;-->
-                    <!--var y = py + dy;-->
-                    <!--res.push([x.toFixed(2), y.toFixed(2), 1]);-->
-
-                    <!--px = x;-->
-                    <!--py = y;-->
-                <!--}-->
-                <!--return res;-->
-            <!--});-->
-
-            <!--var map = new mapboxgl.Map({-->
-                <!--container: 'chart', // container id-->
-                <!--style: {-->
-                    <!--'version': 8,-->
-
-                    <!--'sources': {},-->
-                    <!--'layers': []-->
-                <!--},-->
-                <!--center: [112, 37.94], // starting position-->
-                <!--// hash: true,-->
-                <!--// interactive:false,-->
-                <!--// pitch: 45,-->
-                <!--zoom: 0 // starting zoom-->
-            <!--});-->
-            <!--map.addControl(new mapboxgl.NavigationControl());-->
-
-            <!--map.on('load', function () {-->
-                <!--map.addSource('google.tile', {-->
-                    <!--'type': 'raster',-->
-                    <!--'tiles': ['https://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}'],-->
-                    <!--'tileSize': 256-->
-                <!--});-->
-                <!--map.addLayer({-->
-                    <!--'id': 'google',-->
-                    <!--'type': 'raster',-->
-                    <!--'source': 'google.tile'-->
-                <!--});-->
-
-                <!--var echartslayer=new EchartsLayer(map);-->
-                <!--echartslayer.chart.setOption(option = {-->
-
-                    <!--GLMap: {-->
-                        <!--roam: true-->
-                    <!--},-->
-                    <!--coordinateSystem: 'GLMap',-->
-                    <!--title: {-->
-<!--//                        text: '旅行数据点亮世界',-->
-<!--//                        subtext: 'From ThinkGIS',-->
-<!--//                        sublink: 'http://www.thinkgis.cn/public/sina',-->
-                        <!--left: 'center',-->
-                        <!--top: 'top',-->
-                        <!--textStyle: {-->
-                            <!--color: '#fff'-->
-                        <!--}-->
-                    <!--},-->
-                    <!--tooltip: {},-->
-                    <!--legend: {-->
-                        <!--left: 'left',-->
-                        <!--data: ['强', '中', '弱'],-->
-                        <!--textStyle: {-->
-                            <!--color: '#ccc'-->
-                        <!--}-->
-                    <!--},-->
-                    <!--geo: {-->
-                        <!--name: '强',-->
-                        <!--type: 'scatter',-->
-                        <!--map: 'GLMap',-->
-                        <!--label: {-->
-                            <!--emphasis: {-->
-                                <!--show: false-->
-                            <!--}-->
-                        <!--},-->
-                        <!--itemStyle: {-->
-                            <!--normal: {-->
-                                <!--areaColor: '#323c48',-->
-                                <!--borderColor: '#111'-->
-                            <!--},-->
-                            <!--emphasis: {-->
-                                <!--areaColor: '#2a333d'-->
-                            <!--}-->
-                        <!--}-->
-                    <!--},-->
-                    <!--series: [{-->
-                        <!--name: '弱',-->
-                        <!--type: 'scatter',-->
-                        <!--coordinateSystem: 'GLMap',-->
-                        <!--symbolSize: 10,-->
-                        <!--large: true,-->
-                        <!--itemStyle: {-->
-                            <!--normal: {-->
-                                <!--shadowBlur: 2,-->
-                                <!--shadowColor: 'red',-->
-                                <!--color: 'red'-->
-                            <!--}-->
-                        <!--},-->
-                        <!--data: weiboData[0]-->
-                    <!--}, {-->
-                        <!--name: '中',-->
-                        <!--type: 'scatter',-->
-                        <!--coordinateSystem: 'GLMap',-->
-                        <!--symbolSize: 10,-->
-                        <!--large: true,-->
-                        <!--itemStyle: {-->
-                            <!--normal: {-->
-                                <!--shadowBlur: 2,-->
-                                <!--shadowColor: 'rgba(14, 241, 242, 0.8)',-->
-                                <!--color: 'rgba(14, 241, 242, 0.8)'-->
-                            <!--}-->
-                        <!--},-->
-                        <!--data: weiboData[1]-->
-                    <!--}, {-->
-                        <!--name: '强',-->
-                        <!--type: 'scatter',-->
-                        <!--coordinateSystem: 'GLMap',-->
-                        <!--symbolSize: 10,-->
-                        <!--large: true,-->
-                        <!--itemStyle: {-->
-                            <!--normal: {-->
-                                <!--shadowBlur: 2,-->
-                                <!--shadowColor: 'rgba(255, 255, 255, 0.8)',-->
-                                <!--color: 'rgba(255, 255, 255, 0.8)'-->
-                            <!--}-->
-                        <!--},-->
-                        <!--data: weiboData[2]-->
-                    <!--}]-->
-                <!--});-->
-
-
-            <!--})-->
-
-
-        <!--});-->
-    <!--</script>-->
-
 <div class='trip_list' infinite-scroll="loadMore()" infinite-scroll-distance="2" infinite-scroll-disabled="isbusy" infinite-scroll-immediate-check="false">
 
-    <div class="sponsors_title">Sponsors</div>
+    <div class="sponsors_title">赞助商</div>
     <div class="sponsors">
 
         <div class="sponsor">
             <div>
                 <a href="https://fmyoutu.taobao.com/" target="_blank"><img src="img/modeng.jpeg"></a>
             </div>
-            <!--<div>-->
-            <!--携程网-->
-            <!--</div>-->
+        </div>
+        <div class="sponsor">
+            <div>
+                <a href="http://54taotao.cn/" target="_blank"><img src="img/54taotao.png"></a>
+            </div>
         </div>
 
 
