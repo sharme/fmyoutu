@@ -435,6 +435,8 @@ var codeList = [];
 
 var tempCodeList = [];
 
+var ips = [];
+
 var clearTempCodeList = setInterval(function(){
     tempCodeList = [];
 },1000*60);
@@ -442,7 +444,7 @@ var clearTempCodeList = setInterval(function(){
 
 var clearCodeList = setInterval(function(){
     codeList = [];
-},1000*60*5);
+},1000*60*30);
 
 var blacklist = [];
 var whitelist = [];
@@ -450,6 +452,10 @@ var whitelist = [];
 router.get('/sendCode', function (req, res, next) {
 
     var to = req.param('to');
+    if(to.length != 11){
+        res.send("不要闲的无聊, 走API犯贱");
+        return;
+    }
     var ipAddress = req.connection.remoteAddress;
     if(req.header['x-forwarded-for']){
         ipAddress = req.header['x-forwarded-for'];
@@ -458,6 +464,11 @@ router.get('/sendCode', function (req, res, next) {
     var send = true;
     console.log('IP: ' + ipAddress);
 
+
+    codeList.push({ip: ipAddress});
+    
+    
+    
     console.log("tempList: " + JSON.stringify(tempCodeList));
     console.log("codeList: " + JSON.stringify(codeList));
 
@@ -475,7 +486,6 @@ router.get('/sendCode', function (req, res, next) {
     var checkCount = 0;
     codeList.forEach(function(item, index){
         for (key in item){
-            console.log(key + " ; " + item[key]);
             if(key === 'ip' && item[key] === ipAddress){
                checkCount++;
             }
@@ -484,7 +494,6 @@ router.get('/sendCode', function (req, res, next) {
 
     if(checkCount > 3) {
         blacklist.push({ip: ipAddress});
-
     }
 
 
@@ -493,7 +502,7 @@ router.get('/sendCode', function (req, res, next) {
             console.log(key + " ; " + item[key]);
             if(key === 'ip' && item[key] === ipAddress){
                 send = false;
-                res.send('03');
+                res.send('拒绝访问, 非法请求');
                 return;
             }
         }
@@ -512,7 +521,9 @@ router.get('/sendCode', function (req, res, next) {
     console.log("Blacklist: " + JSON.stringify(blacklist));
 
     if(send) {
-        sendSMS(res, to, ipAddress);
+       sendSMS(res, to, ipAddress);
+    } else {
+        res.send("非法请求");
     }
 
 
@@ -572,8 +583,6 @@ function sendSMS(res, to, ipAddress){
         }
     };
     console.log("request data: " + JSON.stringify(req + " ; "+ reqData));
-    // codeList.push({to: to, code: code, ip: ipAddress});
-    // tempCodeList.push({to: to, code: code, ip: ipAddress});
     // res.send("01");
 
     var httpReq = http.request(req, function (response) {
