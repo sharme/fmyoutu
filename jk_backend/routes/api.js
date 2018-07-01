@@ -446,16 +446,22 @@ var clearCodeList = setInterval(function(){
     codeList = [];
 },1000*60*60);
 
+var clearIpsList = setInterval(function(){
+    ips = [];
+},1000*60*60);
+
 var blacklist = [];
 var whitelist = [];
 
 router.get('/sendCode', function (req, res, next) {
 
     var to = req.param('to');
-    if(to.length != 11 || !parseInt(to)){
+
+    if(to.length != 11 || isNaN(to.toString())){
         res.send("不要闲的无聊, 走API犯贱");
         return;
     }
+    
     var ipAddress = req.connection.remoteAddress;
     if(req.header['x-forwarded-for']){
         ipAddress = req.header['x-forwarded-for'];
@@ -463,12 +469,11 @@ router.get('/sendCode', function (req, res, next) {
     }
     var send = true;
     console.log('Visitor IP: ' + ipAddress);
-
-    
-    console.log("blackList: " + JSON.stringify(blacklist));
+    ips.push({ip: ipAddress});
     console.log("tempList: " + JSON.stringify(tempCodeList));
     console.log("codeList: " + JSON.stringify(codeList));
-
+    console.log("blackList: " + JSON.stringify(blacklist));
+    
     tempCodeList.forEach(function(item, index){
         for (key in item){
             console.log(key + " ; " + item[key]);
@@ -490,14 +495,21 @@ router.get('/sendCode', function (req, res, next) {
         }
     });
 
+    console.log("IPs: " + JSON.stringify(ips));
+    ips.forEach(function(item, index){
+        for (key in item){
+            if(key === 'ip' && item[key] === ipAddress){
+                checkCount++;
+            }
+        }
+    });
 
     blacklist.forEach(function(item, index){
         for (key in item){
-            console.log(key + " ; " + item[key]);
             if(key === 'ip' && item[key] === ipAddress){
                 send = false;
-                console("拒绝访问, 非法请求, IP: " + ipAddress);
-                res.send('拒绝访问, 非法请求');
+                console.log("拒绝访问, 非法请求, IP: " + ipAddress);
+                res.send('03');
                 return;
             }
         }
@@ -520,9 +532,8 @@ router.get('/sendCode', function (req, res, next) {
     console.log("Blacklist: " + JSON.stringify(blacklist));
 
     if(send) {
-       sendSMS(res, to, ipAddress);
-    } else {
-        res.send("非法请求");
+       // res.send("Send Msg --------------------------");
+        sendSMS(res, to, ipAddress);
     }
 
 
@@ -558,13 +569,14 @@ function sendSMS(res, to, ipAddress){
     }
     var time = year + month + day + hours + min + seconds;
     var sig = md5("49c9e38e67f44f778a921da9793a8237" + "7dce4a441bcb48c7bc0e63290fa83f21" + time);
-    var data = {
-        accountSid: "49c9e38e67f44f778a921da9793a8237",
-        smsContent: "【有图网】您注册有图网的验证码为" + code + "，请于5分钟内正确输入验证码。",
-        to: to,
-        timestamp: time,
-        sig: sig
-    };
+
+    // var data = {
+    //     accountSid: "49c9e38e67f44f778a921da9793a8237",
+    //     smsContent: "【有图网】您注册有图网的验证码为" + code + "，请于5分钟内正确输入验证码。",
+    //     to: to,
+    //     timestamp: time,
+    //     sig: sig
+    // };
 
     var reqData = "";
     reqData += "accountSid=" + "49c9e38e67f44f778a921da9793a8237";
@@ -572,6 +584,7 @@ function sendSMS(res, to, ipAddress){
     reqData += "&to=" + to;
     reqData += "&timestamp=" + time;
     reqData += "&sig=" + sig;
+    
     var req = {
         hostname: 'api.miaodiyun.com',
         port: 80,
@@ -582,15 +595,14 @@ function sendSMS(res, to, ipAddress){
         }
     };
     console.log("request data: " + JSON.stringify(req + " ; "+ reqData));
-    // res.send("01");
 
     var httpReq = http.request(req, function (response) {
         response.on("data", function(result){
             console.log("API response: " + JSON.parse(result).respCode + ";"  +" result: " + result );
             if("00000" === JSON.parse(result).respCode){
-                codeList.push({to: to, code: code, ip: ipAddress});
-                tempCodeList.push({to: to, code: code, ip: ipAddress});
                 if(res){
+                    codeList.push({to: to, code: code, ip: ipAddress});
+                    tempCodeList.push({to: to, code: code, ip: ipAddress});
                     res.send("01");
                 }
 
