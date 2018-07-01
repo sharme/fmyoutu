@@ -452,7 +452,7 @@ var whitelist = [];
 router.get('/sendCode', function (req, res, next) {
 
     var to = req.param('to');
-    if(to.length != 11 && !parseInt(to)){
+    if(to.length != 11 || !parseInt(to)){
         res.send("不要闲的无聊, 走API犯贱");
         return;
     }
