@@ -444,7 +444,7 @@ var clearTempCodeList = setInterval(function(){
 
 var clearCodeList = setInterval(function(){
     codeList = [];
-},1000*60*30);
+},1000*60*60);
 
 var blacklist = [];
 var whitelist = [];
@@ -452,7 +452,7 @@ var whitelist = [];
 router.get('/sendCode', function (req, res, next) {
 
     var to = req.param('to');
-    if(to.length != 11){
+    if(to.length != 11 && !parseInt(to)){
         res.send("不要闲的无聊, 走API犯贱");
         return;
     }
@@ -462,13 +462,10 @@ router.get('/sendCode', function (req, res, next) {
         console.log("x-forward-for ip: " + ipAddress)
     }
     var send = true;
-    console.log('IP: ' + ipAddress);
+    console.log('Visitor IP: ' + ipAddress);
 
-
-    codeList.push({ip: ipAddress});
     
-    
-    
+    console.log("blackList: " + JSON.stringify(blacklist));
     console.log("tempList: " + JSON.stringify(tempCodeList));
     console.log("codeList: " + JSON.stringify(codeList));
 
@@ -483,6 +480,7 @@ router.get('/sendCode', function (req, res, next) {
             }
         }
     });
+    
     var checkCount = 0;
     codeList.forEach(function(item, index){
         for (key in item){
@@ -492,21 +490,22 @@ router.get('/sendCode', function (req, res, next) {
         }
     });
 
-    if(checkCount > 3) {
-        blacklist.push({ip: ipAddress});
-    }
-
 
     blacklist.forEach(function(item, index){
         for (key in item){
             console.log(key + " ; " + item[key]);
             if(key === 'ip' && item[key] === ipAddress){
                 send = false;
+                console("拒绝访问, 非法请求, IP: " + ipAddress);
                 res.send('拒绝访问, 非法请求');
                 return;
             }
         }
     });
+    
+    if(checkCount > 3) {
+        blacklist.push({ip: ipAddress});
+    }
 
     whitelist.forEach(function(item, index){
         for (key in item){
@@ -597,9 +596,10 @@ function sendSMS(res, to, ipAddress){
 
             }else{
                 if(res){
+                    codeList.push({to: to, code: code, ip: ipAddress});
+                    tempCodeList.push({to: to, code: code, ip: ipAddress});
                     res.send("00");
                 }
-
             }
         });
 
